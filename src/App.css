@@ -1,0 +1,35 @@
+*{
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+/*Fonte do Store e Open*/
+@import url("https://fonts.googleapis.com/css2?family=Montserrat:wght@200&family=Raleway:ital,wght@0,400;1,100;1,300&display=swap");
+
+:root {
+  --primary-color: #da5c5c;
+  --primary-hover-color: #a74b4b;
+  --dark-color: #263238;
+  --secondary-color: #9e9e9e;
+  --light-color: #f5f5f5;
+  --clr-primary: #0e48fe;
+  --clr-primary-hover: #29e6a7;
+  --clr-primary-dark: #039d69;
+  --clr-gray100: #f9fbff;
+  --clr-gray150: #f4f6fb;
+  --clr-gray200: #eef1f6;
+  --clr-gray300: #e1e5ee;
+  --clr-gray400: #767b91;
+  --clr-gray500: #4f546c;
+  --clr-gray600: #2a324b;
+  --clr-gray700: #161d34;
+  --clr-hover-color: #f99304;
+  --radius: 0.2rem;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}

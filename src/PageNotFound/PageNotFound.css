@@ -1,0 +1,15 @@
+.go_back {
+    margin-left: 5rem;
+    font-weight: bold;
+}
+.not_found {
+    display: block;
+    text-align: center;
+    margin: auto;
+    background-color: rgba(0, 0, 0, 5%);
+    padding: 1rem;
+}
+.not_found h1{
+    color: #030303;
+    font-size: 40px;
+}

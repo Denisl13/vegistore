@@ -1,0 +1,132 @@
+/*Card Especial em destaque/Promoção*/
+.card--master--Feminino.special-card {
+  background: linear-gradient(to right, #232f3e, orange);/*Facebook #3B5998*/
+  color: #ffffff;
+}
+.card--master--Feminino.special-card h2,
+.card--master--Feminino.special-card p {
+  color: #ffffff;
+}
+
+.grid--item--Feminino {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 0.25rem;
+  transition: transform 0.3s ease-in-out;
+
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.grid--item--Feminino:hover {
+  transform: scale(1.04);
+}
+.grid-container-Feminino {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(12.5rem, 1fr));
+  grid-auto-rows: minmax(12.5rem, auto);
+  grid-auto-flow: dense;
+
+  grid-column-gap: 1.25rem;
+  gap: 1rem;
+  padding: 1rem;
+
+  /*font-family: "Oxygen", sans-serif;*/
+  color: #030303;
+  background-color: #f5f5f5;
+}
+
+.card--master--Feminino {
+  overflow: hidden;
+  box-shadow: 0 2px 20px var(--clr-gray300);
+  border-radius: var(--radius);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  cursor: pointer;
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+  transition: transform 200ms ease-in;
+}
+
+.card-imagem--Feminino {
+  height: 9rem;
+  width: 100%;
+  max-width: 100%;
+  object-fit: cover;
+}
+
+.card__titulo__Feminino {
+  font-weight: 500;
+  font-weight: bold;
+  font-size: 18px;
+  font-family: "BreuerText", sans-serif;
+  line-height: 25px;
+  padding: 1rem;
+  color: #353535;
+}
+.card__descricao__Feminino {
+  font-weight: 400;
+  font-size: 14px;
+  font-family: "Myriad Pro", sans-serif;
+  line-height: 20px;
+  padding: 0 0.8rem;
+  color: #353535;
+}
+.card__botao__Feminino {
+  padding: 0.5rem;
+  margin: 0.5rem;
+  font-family: inherit;
+  font-weight: bold;
+  font-size: 1rem;
+  cursor: pointer;
+  border: 2px solid var(--clr-primary);
+  border-radius: var(--radius);
+  background: transparent;
+  color: var(--clr-primary);
+  transition: background 200ms ease-in, color 200ms ease-in;
+}
+.card--master--Feminino {
+  transform: scale(1.02);
+}
+.card--master--Feminino:hover .card__botao__Feminino {
+  background: var(--clr-primary);
+  color: #ffffff;
+}
+
+/*Alinhameto Stars e Sales +vendidos*/
+.card__label__Feminino.has-label {
+  background-color: #CC0C39;
+  color: #ffffff;
+  padding: 0.3rem;
+  margin: -10px;
+  border-radius: 0.2rem;
+  align-self: flex-start;
+}
+
+.card__stars__Feminino {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0.7rem;
+}
+
+.card__stars__Feminino span {
+  margin-bottom: 0.2rem;
+}
+
+.card__stars__Feminino p {
+  margin: 0;
+  font-size: 14px;
+  margin-top: 0.2rem;
+}
+
+@media (min-width: 600px) {
+  .wide {
+    grid-column: span 2;
+  }
+  .tall {
+    grid-row: span 2;
+  }
+}

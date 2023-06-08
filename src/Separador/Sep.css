@@ -1,0 +1,14 @@
+.Sep {
+  max-width: 100%; /* Largura desejada */
+  height: 70px; /* Altura desejada */
+  padding: 0.7rem;
+  background-color: #ebece2;
+  position: relative;
+  font-weight: 500;
+  font-size: 18px;
+  font-family: "BreuerText", sans-serif;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  margin-top: 10px; /* Espaçamento superior desejado */
+}

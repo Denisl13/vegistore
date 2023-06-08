@@ -1,0 +1,128 @@
+/*Colorir Qualquer card desejado*/
+.card--master--Homepage.special-card {/*Concatenação de ambas as classes sem espaços*/
+  background: linear-gradient(to right, #232f3e, orange);
+}
+.card--master--Homepage.special-card h2,
+.card--master--Homepage.special-card p {
+  color: #ffffff;
+}
+
+.grid--item--Homepage {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: var(--radius);
+  transition: transform 0.3s ease-in-out;
+
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+.grid--item--Homepage:hover {
+  transform: scale(1.04);
+}
+.grid-container-Homepage {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(12.5rem, 1fr));
+  grid-auto-rows: minmax(12.5rem, auto);
+  grid-auto-flow: dense;
+  grid-column-gap: 1.25rem;
+  gap: 1rem;
+  padding: 1rem;
+  /*font-family: "Oxygen", sans-serif;*/
+}
+
+.card--master--Homepage {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  overflow: hidden;
+  cursor: pointer;
+  border-radius: var(--radius);
+  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
+  transition: transform 200ms ease-in;
+}
+
+.card-imagem--Homepage {
+  height: 12rem;
+  width: 100%;
+  object-fit: cover;
+}
+
+.card__titulo__Homepage {
+  font-weight: 500;
+  font-weight: bold;
+  font-size: 24px;
+  font-family: "BreuerText", sans-serif;
+  line-height: 25px;
+  padding: 1rem;
+  color: #000000;
+}
+.card__descricao__Homepage {
+  font-weight: 400;
+  font-size: 16px;
+  font-family: "Myriad Pro", sans-serif;
+  line-height: 20px;
+  padding: 0 0.8rem;
+  color: #000000;
+}
+.card__botao__Homepage {
+  padding: 0.5rem;
+  margin: 0.5rem;
+  font-family: inherit;
+  font-weight: bold;
+  font-size: 1rem;
+  cursor: pointer;
+  border: 2px solid var(--clr-primary);
+  border-radius: var(--radius);
+  background: transparent;
+  color: var(--clr-primary);
+  transition: background 200ms ease-in, color 200ms ease-in;
+}
+.card--master--Homepage {
+  transform: scale(1.02);
+}
+.card--master--Homepage:hover .card__botao__Homepage {
+  background: var(--clr-primary);
+  color: #ffffff;
+}
+
+/*Alinhameto Stars e Sales +vendidos*/
+.card__label__Homepage.has-label {
+  font-size: 12px;
+  padding: 0.3rem;
+  margin: -10px;
+  border-radius: var(--radius);
+  align-self: flex-start;
+  background-color: #CC0C39; /* Cor de plano de fundo alterada */
+}
+.label__content__Homepage {
+  color: #ffffff; /* Cor do texto alterada */
+}
+.card__stars__Homepage {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0.7rem;
+}
+
+.card__stars__Homepage span {
+  margin-bottom: 0.2rem;
+}
+
+.card__stars__Homepage p {
+  margin: 0;
+  font-size: 14px;
+  margin-top: 0.2rem;
+}
+
+
+@media (min-width: 600px) {
+  .wide {
+    grid-column: span 2;
+  }
+  .tall {
+    grid-row: span 2;
+  }
+}
