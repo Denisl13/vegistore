@@ -86,7 +86,7 @@ function CardHomepage(props: HomePageProps) {
 function Homepage() {
   return (
     <div className="grid--container--Homepage">
-      <Sep title="Casa & Decoração" />
+      <Sep title="Casa e Decoração" />
       <div className="grid-container-Homepage">
         <div className="grid--item--Homepage item-1">
           <div className="wrapper__Homepage">
@@ -125,7 +125,7 @@ function Homepage() {
           </div>
         </div>
       </div>
-      <Sep title="Cosmético" />
+      <Sep title="Beleza e Cuidados Pessoais" />
       <div className="grid-container-Homepage">
         <div className="grid--item--Homepage item-1">
           <div className="wrapper__Homepage">
@@ -160,7 +160,7 @@ function Homepage() {
           </div>
         </div>
       </div>
-      <Sep title="Moda Feminina" />
+      <Sep title="Roupas Femininas" />
       <div className="grid-container-Homepage">
         <div className="grid--item--Homepage item-1">
           <div className="wrapper__Homepage">
@@ -194,7 +194,7 @@ function Homepage() {
           </div>
         </div>
       </div>
-      <Sep title="Game" />
+      <Sep title="Games e Consoles" />
       <div className="grid-container-Homepage">
         <div className="grid--item--Homepage item-1">
           <div className="wrapper__Homepage">

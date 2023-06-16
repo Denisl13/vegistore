@@ -90,7 +90,7 @@ function BMFeminina() {
     <div className="grid--container--Feminino">
       <NavHeader />
       <BmodaFeminina />
-      <Sep title="Moda Feminina" />
+      <Sep title="Roupas Femininas" />
       <div className="grid-container-Feminino">
         <div className="grid--item--Feminino item-1">
           <div className="wrapper__Feminino">

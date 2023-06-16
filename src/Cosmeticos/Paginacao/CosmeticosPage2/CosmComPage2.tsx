@@ -121,7 +121,7 @@ function CosmComPage2() {
       <div id="topo"></div>
       <NavHeader />
       <Bcosmeticos img={imageUrl} />
-      <Sep title="Ácido Hialurônico" />
+      <Sep title="Perfumes" />
       <div className="grid-container-Cosmeticos">
         <div className="grid--item--Cosmeticos item-1">
           <div className="wrapper__Cosmeticos">

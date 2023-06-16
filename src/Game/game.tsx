@@ -6,6 +6,7 @@ import BvoltaTop from "../VoltaInicio/BvoltaTopo";
 import Footer from "../Footer/footer";
 import Bgame from "./Bgame/Bgame";
 import Sep from "../Separador/Sep";
+import { useState } from "react";
 
 interface CardGameProps {
   img: string;
@@ -19,57 +20,71 @@ interface CardGameProps {
   className?: string;
   isSpecial?: boolean;
   style?: React.CSSProperties;
+  isFeatured?: boolean;
 }
 
 function CardGame(props: CardGameProps) {
-  const filledStars = props.stars ? Math.floor(props.stars) : 0;
+  const [showName, setShowName] = useState(false);
 
+  const handleMouseEnter = () => {
+    setShowName(true);
+  };
+
+  const handleMouseLeave = () => {
+    setShowName(false);
+  };
+
+  const filledStars = props.stars ? Math.floor(props.stars) : 0;
   const stars = Array.from({ length: 5 }, (_, i) => (
     <span key={i}>
       <FontAwesomeIcon
         icon={faStar}
         color={i < filledStars ? "#f99304" : "#ddd"}
-        size="1x"
+        className="star-icon" // Adicione a classe CSS para estrelas
       />
     </span>
   ));
-const filledHearts = props.hearts ? Math.floor(props.hearts) : 0;
-   const hearts = Array.from({ length: 5 }, (_, i) => (
+
+  const filledHearts = props.hearts ? Math.floor(props.hearts) : 0;
+  const hearts = Array.from({ length: 5 }, (_, i) => (
     <span key={i}>
       <FontAwesomeIcon
         icon={faHeart}
         color={i < filledHearts ? "#f00" : "#ddd"}
-        size="1x"
         className="heart-animation"
         style={{ animationDelay: `${i * 0.1}s` }}
       />
     </span>
   ));
-  /*Substring > contagem de palavras até 200 */
-  let description = props.description;
-if (description.length > 150) {
-  description = description.substring(0, 150) + "...";
-}
-  return (
-    <div
-      className={`card--master--Game ${props.isSpecial ? "special-card" : ""}`}
-    >
-      <div className="card__corpo__Game">
-        <a href={props.link} target="_blank" rel="noopener noreferrer">
-          <img
-            src={props.img}
-            className="card-imagem--Game"
-            alt={props.title}
-          />
-        </a>
-        <h2 className={`card__titulo__Game ${props.isSpecial ? "special-card" : ""}`}>
-          {props.title}
-        </h2>
-        <p className={`card__descricao__Game ${props.isSpecial ? "special-card" : ""}`}>
-          {description}
-        </p>
-      </div>
 
+  let description = props.description;
+  if (description.length > 100) {
+    description = description.substring(0, 100) + "...";
+  }
+
+return (
+  <div className={`card--master--Game ${props.isSpecial ? "special-card" : ""}`}>
+    <div
+      className={`card__corpo__Game ${showName ? "show-name" : ""}`}
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
+    >
+      {props.isFeatured && (
+        <div className="featured-label">
+          Mais Vendido
+          <div className={`label-name ${showName ? 'show-name' : ''}`}>em Box Ps4</div>
+        </div>
+      )}
+      <a href={props.link} target="_blank" rel="noopener noreferrer">
+        <img
+          src={props.img}
+          className={`card-imagem--Game ${props.isFeatured ? "featured-card" : ""}`}
+          alt={props.title}
+        />
+      </a>
+      <h2 className={`card__titulo__Game ${props.isSpecial ? "special-card" : ""}`}>
+        {props.title}
+      </h2>
       <div className="card__stars__Game">
         <div className={`card__label__Game ${props.label ? "has-label" : ""}`}>
           <div className="label__content__Game">{props.label}</div>
@@ -78,12 +93,16 @@ if (description.length > 150) {
         {props.hearts && <div className="card__hearts__Game">{hearts}</div>}
         {props.sales && <p>{props.sales}</p>}
       </div>
-      <a href={props.link} target="_blank" rel="noopener noreferrer">
-          <button className={`card__botao__Game ${props.isSpecial ? "special-card" : ""}`}>
-              Adicionar ao carrinho
-          </button>
-        </a>
+      <p className={`card__descricao__Game ${props.isSpecial ? "special-card" : ""}`}>
+        {(description)}
+      </p>
     </div>
+    <a href={props.link} target="_blank" rel="noopener noreferrer">
+      <button className={`card__botao__Game ${props.isSpecial ? "special-card" : ""}`}>
+        Adicionar ao carrinho
+      </button>
+    </a>
+  </div>
   );
 }
 function Game() {
@@ -91,26 +110,28 @@ function Game() {
     <div className="grid--container--Game">
       <NavHeader />
       <Bgame />
-      <Sep title="Game" />
+      <Sep title="Games e Consoles" />
       <div className="grid-container-Game">
         <div className="grid--item--Game item-1">
           <div className="wrapper__Game">
             <CardGame
               img="https://m.media-amazon.com/images/I/61es84xZGzL._AC_SX296_SY426_FMwebp_QL65_.jpg"
-              title="Baked Cod with Vegetables"
-              description="Baked Cod with Vegetables. 30 minute meal!"
-              hearts={3}
+              title="SOS LÁBIOS ESFOLIANTE LABIAL 3, 5GR TOP BEAUTY, Top Beauty"
+              description="Mais de 200 compras na semana passada"
+              stars={3}
+              isFeatured={true}
             />
           </div>
-        </div>
+        </div>  
         <div className="grid--item--Game">
           <div className="wrapper--Game">
             <CardGame
               img="https://m.media-amazon.com/images/I/91t1G1UvSzL._AC_SX296_SY426_FMwebp_QL65_.jpg"
               title="Baked Cod with Vegetables"
-              description="Baked Cod with Vegetables. 30 minute meal!"
+              description="Leve mais, pague menos com o Super Receba até segunda-feira, 19 de jun.
+                          Frete GRÁTIS"
               hearts={4}
-              sales="+1900 Vendidos"
+              sales="Mais de 200 compras na semana passada"
             />
           </div>
         </div>
@@ -119,7 +140,7 @@ function Game() {
             <CardGame
               img="https://m.media-amazon.com/images/I/51VZErxKwkL._AC_SX679_.jpg"
               title="PlayStation®5 + God of War Ragnarök"
-              description="PlayStation5 SSD ultrarrápido: Maximize suas sessões de jogo com tempo de carregamento praticamente instantâneo para jogos do PS5 instalados."
+              description="PlayStation5 SSD ultrarrápido: Maximize suas sessões de 200 jogo "
               hearts={5}
               sales="+1950 avaliações de clientes"
               label="-50%"

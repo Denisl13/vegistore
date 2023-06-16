@@ -91,7 +91,7 @@ function Cosmeticos() {
     <div className="grid--container--Casa">
       <NavHeader />
       <Bcasa />
-      <Sep title="Casa & Decoração" />
+      <Sep title="Casa e Decoração" />
       <div className="grid-container-Casa">
         <div className="grid--item--Casa item-1">
           <div className="wrapper__Casa">

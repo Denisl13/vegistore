@@ -117,7 +117,7 @@ function Cosmeticos() {
     <div className="grid--container--Cosmeticos">
       <div id="topo"></div>
       <Bcosmeticos img={imageUrl} />
-      <Sep title="Beleza" />
+      <Sep title="Beleza e Cuidados Pessoais" />
       <div className="grid-container-Cosmeticos">
         <div className="grid--item--Cosmeticos item-1">
           <div className="wrapper__Cosmeticos">
