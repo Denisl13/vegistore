@@ -54,22 +54,22 @@ function Sidenav() {
             to="/cosmeticos"
             onClick={() => handleButtonClick("Cosméticos")}
           >
-            Cosméticos
+            Beleza
           </Link>
           <Link
             to="/casaedecoracao"
             onClick={() => handleButtonClick("Casa & Decoração")}
           >
-            Casa&Decoração
+            Casa & Decoração
           </Link>
           <Link
             to="/modafeminina"
             onClick={() => handleButtonClick("Moda Feminina")}
           >
-            Moda Feminina
+            Feminino
           </Link>
           <Link to="/games" onClick={() => handleButtonClick("Games")}>
-            Games
+            Games & Consoles
           </Link>
         </div>
       </div>

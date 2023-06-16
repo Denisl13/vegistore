@@ -1,6 +1,6 @@
 import "./game.css";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faStar } from "@fortawesome/free-solid-svg-icons";
+import { faHeart, faStar } from "@fortawesome/free-solid-svg-icons";
 import { NavHeader } from "../Header/header";
 import BvoltaTop from "../VoltaInicio/BvoltaTopo";
 import Footer from "../Footer/footer";
@@ -11,14 +11,19 @@ interface CardGameProps {
   img: string;
   title: string;
   description: string;
-  stars?: number; //stars
-  sales?: string; //número de vendas
-  label?: string; //propriedade desconto
-  className?: string; //Card especial p Destaque
-  isSpecial?: boolean; //identificar o cartão especial
+  stars?: number;
+  hearts?: number;
+  link?: string;
+  sales?: string;
+  label?: string;
+  className?: string;
+  isSpecial?: boolean;
+  style?: React.CSSProperties;
 }
+
 function CardGame(props: CardGameProps) {
   const filledStars = props.stars ? Math.floor(props.stars) : 0;
+
   const stars = Array.from({ length: 5 }, (_, i) => (
     <span key={i}>
       <FontAwesomeIcon
@@ -28,34 +33,59 @@ function CardGame(props: CardGameProps) {
       />
     </span>
   ));
+const filledHearts = props.hearts ? Math.floor(props.hearts) : 0;
+   const hearts = Array.from({ length: 5 }, (_, i) => (
+    <span key={i}>
+      <FontAwesomeIcon
+        icon={faHeart}
+        color={i < filledHearts ? "#f00" : "#ddd"}
+        size="1x"
+        className="heart-animation"
+        style={{ animationDelay: `${i * 0.1}s` }}
+      />
+    </span>
+  ));
+  /*Substring > contagem de palavras até 200 */
+  let description = props.description;
+if (description.length > 150) {
+  description = description.substring(0, 150) + "...";
+}
   return (
     <div
-      className={`card--master--Game ${
-        props.isSpecial ? "special-card" : ""}`}
+      className={`card--master--Game ${props.isSpecial ? "special-card" : ""}`}
     >
-      <div className="card__corpo">
-        <img
-          src={props.img}
-          className="card-imagem--Game"
-          alt={props.title}
-        />
-        <h2 className="card__titulo__Game">{props.title}</h2>
-        <p className="card__descricao__Game">{props.description}</p>
+      <div className="card__corpo__Game">
+        <a href={props.link} target="_blank" rel="noopener noreferrer">
+          <img
+            src={props.img}
+            className="card-imagem--Game"
+            alt={props.title}
+          />
+        </a>
+        <h2 className={`card__titulo__Game ${props.isSpecial ? "special-card" : ""}`}>
+          {props.title}
+        </h2>
+        <p className={`card__descricao__Game ${props.isSpecial ? "special-card" : ""}`}>
+          {description}
+        </p>
       </div>
+
       <div className="card__stars__Game">
-        <div
-          className={`card__label__Game ${props.label ? "has-label" : ""}`}
-        >
+        <div className={`card__label__Game ${props.label ? "has-label" : ""}`}>
           <div className="label__content__Game">{props.label}</div>
         </div>
-        <span>{props.stars && stars}</span>
-        {props.sales && <p>{props.sales} vendidos</p>}
+        {props.stars && <span>{stars}</span>}
+        {props.hearts && <div className="card__hearts__Game">{hearts}</div>}
+        {props.sales && <p>{props.sales}</p>}
       </div>
-      <button className="card__botao__Game">Saiba Mais...</button>
+      <a href={props.link} target="_blank" rel="noopener noreferrer">
+          <button className={`card__botao__Game ${props.isSpecial ? "special-card" : ""}`}>
+              Adicionar ao carrinho
+          </button>
+        </a>
     </div>
   );
 }
-
 function Game() {
   return (
     <div className="grid--container--Game">
@@ -66,32 +96,34 @@ function Game() {
         <div className="grid--item--Game item-1">
           <div className="wrapper__Game">
             <CardGame
-              img="https://images.unsplash.com/photo-1511512578047-dfb367046420?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=871&q=80"
+              img="https://m.media-amazon.com/images/I/61es84xZGzL._AC_SX296_SY426_FMwebp_QL65_.jpg"
               title="Baked Cod with Vegetables"
               description="Baked Cod with Vegetables. 30 minute meal!"
-              stars={5}
+              hearts={3}
             />
           </div>
         </div>
         <div className="grid--item--Game">
           <div className="wrapper--Game">
             <CardGame
-              img="https://media.kingston.com/kingston/articles/ktc-articles-blog-gaming-tips-choosing-gaming-laptop-md.jpg"
+              img="https://m.media-amazon.com/images/I/91t1G1UvSzL._AC_SX296_SY426_FMwebp_QL65_.jpg"
               title="Baked Cod with Vegetables"
               description="Baked Cod with Vegetables. 30 minute meal!"
-              stars={2}
+              hearts={4}
+              sales="+1900 Vendidos"
             />
           </div>
         </div>
         <div className="grid--item--Game">
           <div className="wrapper--Game">
             <CardGame
-              img="https://images.unsplash.com/photo-1542751371-adc38448a05e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80"
-              title="Baked Cod with Vegetables"
-              description="Baked Cod with Vegetables. 30 minute meal!"
-              stars={3}
-              sales="+7431"
+              img="https://m.media-amazon.com/images/I/51VZErxKwkL._AC_SX679_.jpg"
+              title="PlayStation®5 + God of War Ragnarök"
+              description="PlayStation5 SSD ultrarrápido: Maximize suas sessões de jogo com tempo de carregamento praticamente instantâneo para jogos do PS5 instalados."
+              hearts={5}
+              sales="+1950 avaliações de clientes"
               label="-50%"
+              link="https://amzn.to/3X6yaEn"
               isSpecial={true} // Cartão Especial
             />
           </div>
@@ -99,10 +131,12 @@ function Game() {
         <div className="grid--item--Game">
           <div className="wrapper--Game">
             <CardGame
-              img="https://images.unsplash.com/photo-1493711662062-fa541adb3fc8?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80"
-              title="Baked Cod with Vegetables"
-              description="Baked Cod with Vegetables. 30 minute meal!"
+              img="https://m.media-amazon.com/images/I/41lV8jRUrIL._SS400_.jpg"
+              title="PlayStation®5 + God of War Ragnarök"
+              description="PlayStation5 SSD ultrarrápido: Maximize suas sessões de jogo com tempo de carregamento praticamente instantâneo para jogos do PS5 instalados. Instantâneo para jogos do PS5 instalados."
               stars={5}
+              sales="+1950 avaliações de clientes"
+              label="-50%"
             />
           </div>
         </div>
@@ -111,17 +145,18 @@ function Game() {
         <div className="grid--item--Game item1">
           <div className="wrapper__Game">
             <CardGame
-              img="https://images.unsplash.com/photo-1555680202-c86f0e12f086?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80"
-              title="Baked Cod with Vegetables"
-              description="Baked Cod with Vegetables. 30 minute meal!"
+              img="https://m.media-amazon.com/images/I/711eymrSAML._AC_SX296_SY426_QL65_.jpg"
+              title="Horizon Forbidden West Edição Padrão - Playstation 4"
+              description="Explore terras distantes, enfrente máquinas maiores e mais imponentes, e encontre novas tribos incríveis ao retornar para o futuro distante e pós-apocalíptico de Horizon."
               stars={5}
+              isSpecial={true} // Cartão Especial
             />
           </div>
         </div>
         <div className="grid--item--Game">
           <div className="wrapper--Game">
             <CardGame
-              img="https://images.unsplash.com/photo-1581351123004-757df051db8e?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80"
+              img="https://m.media-amazon.com/images/I/81XveK+ycyL._AC_SX296_SY426_QL65_.jpg"
               title="Baked Cod with Vegetables"
               description="Baked Cod with Vegetables. 30 minute meal!"
               stars={3}
@@ -131,7 +166,7 @@ function Game() {
         <div className="grid--item--Game">
           <div className="wrapper--Game">
             <CardGame
-              img="https://plus.unsplash.com/premium_photo-1668046107746-ffcc1ca3498b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1032&q=80"
+              img="https://m.media-amazon.com/images/I/61hB8jmc4tL._AC_UF1000,1000_QL80_FMwebp_.jpg"
               title="Baked Cod with Vegetables"
               description="Baked Cod with Vegetables. 30 minute meal!"
               stars={1}

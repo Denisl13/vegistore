@@ -102,7 +102,7 @@
   background-color: #CC0C39;
   color: #ffffff;
   padding: 0.3rem;
-  margin: -10px;
+  margin: 1px;
   border-radius: 0.2rem;
   align-self: flex-start;
 }
@@ -122,6 +122,30 @@
   margin: 0;
   font-size: 14px;
   margin-top: 0.2rem;
+}
+/*CARDS CORAÇÃO*/
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.2);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
+.card__hearts__ccPage1 {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+}
+
+.card__hearts__ccPage1 span {
+  animation: pulse 1.5s infinite;
 }
 @media (min-width: 600px) {
   .wide {

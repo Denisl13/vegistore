@@ -49,10 +49,15 @@
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
   transition: transform 200ms ease-in;
 }
+/*Alinhamento da imagem ao centro*/
+.card__corpo__Cosmeticos a { 
+  display: flex;
+  justify-content: center;
+  padding: 0.5rem;
+}
 
 .card-imagem--Cosmeticos {
-  height: 12rem;
-  width: 100%;
+  height: 15rem;
   max-width: 100%;
   object-fit: cover;
 }
@@ -60,23 +65,26 @@
 .card__titulo__Cosmeticos {
   font-weight: 500;
   font-weight: bold;
-  font-size: 24px;
+  font-size: 18px;
   font-family: "BreuerText", sans-serif;
   line-height: 25px;
-  padding: 1rem;
+  padding: 0.8rem;
   color: #353535;
 }
+
 .card__descricao__Cosmeticos {
   font-weight: 400;
-  font-size: 16px;
+  font-size: 14px;
   font-family: "Myriad Pro", sans-serif;
   line-height: 20px;
   padding: 0 0.8rem;
   color: #353535;
 }
+
 .card__botao__Cosmeticos {
+  width: 90%;
   padding: 0.5rem;
-  margin: 0.5rem;
+  margin: 0.9rem;
   font-family: inherit;
   font-weight: bold;
   font-size: 1rem;
@@ -87,27 +95,32 @@
   color: var(--clr-primary);
   transition: background 200ms ease-in, color 200ms ease-in;
 }
-.card--master--Cosmeticos{
+
+.card--master--Cosmeticos {
   transform: scale(1.02);
 }
+
 .card--master--Cosmeticos:hover .card__botao__Cosmeticos {
   background: var(--clr-primary);
   color: #ffffff;
 }
+
 .card__label__Cosmeticos.has-label {
   background-color: #CC0C39;
   color: #ffffff;
   padding: 0.3rem;
-  margin: -10px;
+  margin: 1px;
   border-radius: 0.2rem;
   align-self: flex-start;
 }
-.card__stars__Cosmeticos{
+
+.card__stars__Cosmeticos {
   display: flex;
   flex-direction: column;
   align-items: center;
   padding: 0.7rem;
 }
+
 .card__stars__Cosmeticos span {
   margin-bottom: 0.2rem;
 }
@@ -117,11 +130,35 @@
   font-size: 14px;
   margin-top: 0.2rem;
 }
+/*CARDS CORAÇÃO*/
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
 
+  50% {
+    transform: scale(1.2);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
+.card__hearts__Cosmeticos {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+}
+
+.card__hearts__Cosmeticos span {
+  animation: pulse 1.5s infinite;
+}
 @media (min-width: 600px) {
   .wide {
     grid-column: span 2;
   }
+
   .tall {
     grid-row: span 2;
   }
