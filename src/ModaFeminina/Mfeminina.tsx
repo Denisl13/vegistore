@@ -6,9 +6,10 @@ import BvoltaTop from "../VoltaInicio/BvoltaTopo";
 import Footer from "../Footer/footer";
 import Sep from "../Separador/Sep";
 import { NavHeader } from "../Header/header";
+import { useState } from "react";
 
 interface CardFemininoProps {
-   img: string;
+  img: string;
   link?: string;
   title: string;
   description: string;
@@ -19,15 +20,25 @@ interface CardFemininoProps {
   className?: string; //Card especial p Destaque
   isSpecial?: boolean; //identificar o cartão especial
   style?: React.CSSProperties;
+  isFeatured?: boolean;
 }
 function CardFeminino(props: CardFemininoProps) {
+  const [showName, setShowName] = useState(false);
+
+  const handleMouseEnter = () => {
+    setShowName(true);
+  };
+
+  const handleMouseLeave = () => {
+    setShowName(false);
+  };
   const filledStars = props.stars ? Math.floor(props.stars) : 0;
   const stars = Array.from({ length: 5 }, (_, i) => (
     <span key={i}>
       <FontAwesomeIcon
         icon={faStar}
         color={i < filledStars ? "#f99304" : "#ddd"}
-        size="1x"
+        className="star-icon"
       />
     </span>
   ));
@@ -49,39 +60,46 @@ function CardFeminino(props: CardFemininoProps) {
       description = description.substring(0, 150) + "...";
 }
   return (
+    <div className={`card--master--Game ${props.isSpecial ? "special-card" : ""}`}>
     <div
-      className={`card--master--Feminino ${props.isSpecial ? "special-card" : ""}`}
+      className={`card__corpo__Game ${showName ? "show-name" : ""}`}
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
     >
-      <div className="card__corpo__Feminino">
-        <a href={props.link} target="_blank" rel="noopener noreferrer">
-          <img
-            src={props.img}
-            className="card-imagem--Feminino"
-            alt={props.title}
-          />
-        </a>
-        <h2 className={`card__titulo__Feminino ${props.isSpecial ? "special-card" : ""}`}>
-          {props.title}
-        </h2>
-        <p className={`card__descricao__Feminino ${props.isSpecial ? "special-card" : ""}`}>
-          {description}
-        </p>
-      </div>
-
-      <div className="card__stars__Feminino">
-        <div className={`card__label__Feminino ${props.label ? "has-label" : ""}`}>
-          <div className="label__content__Feminino">{props.label}</div>
+      {props.isFeatured && (
+        <div className="featured-label">
+          Mais Vendido
+          <div className={`label-name ${showName ? 'show-name' : ''}`}>em Box Ps4</div>
+        </div>
+      )}
+      <a href={props.link} target="_blank" rel="noopener noreferrer">
+        <img
+          src={props.img}
+          className={`card-imagem--Game ${props.isFeatured ? "featured-card" : ""}`}
+          alt={props.title}
+        />
+      </a>
+      <h2 className={`card__titulo__Game ${props.isSpecial ? "special-card" : ""}`}>
+        {props.title}
+      </h2>
+      <div className="card__stars__Game">
+        <div className={`card__label__Game ${props.label ? "has-label" : ""}`}>
+          <div className="label__content__Game">{props.label}</div>
         </div>
         {props.stars && <span>{stars}</span>}
-        {props.hearts && <div className="card__hearts__Feminino">{hearts}</div>}
+        {props.hearts && <div className="card__hearts__Game">{hearts}</div>}
         {props.sales && <p>{props.sales}</p>}
       </div>
-      <a href={props.link} target="_blank" rel="noopener noreferrer">
-          <button className={`card__botao__Feminino ${props.isSpecial ? "special-card" : ""}`}>
-              Adicionar ao carrinho
-          </button>
-        </a>
+      <p className={`card__descricao__Game ${props.isSpecial ? "special-card" : ""}`}>
+        {(description)}
+      </p>
     </div>
+    <a href={props.link} target="_blank" rel="noopener noreferrer">
+      <button className={`card__botao__Game ${props.isSpecial ? "special-card" : ""}`}>
+        Adicionar ao carrinho
+      </button>
+    </a>
+  </div>
   );
 }
 

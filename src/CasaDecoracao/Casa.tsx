@@ -7,28 +7,40 @@ import { NavHeader } from "../Header/header";
 import BvoltaTop from "../VoltaInicio/BvoltaTopo";
 import { faHeart, faStar } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { useState } from "react";
 
 interface CardCasaProps {
   img: string;
-  link?: string;
   title: string;
   description: string;
   stars?: number;
   hearts?: number;
-  sales?: string; //número de vendas
-  label?: string; //propriedade desconto
-  className?: string; //Card especial p Destaque
-  isSpecial?: boolean; //identificar o cartão especial
+  link?: string;
+  sales?: string;
+  label?: string;
+  className?: string;
+  isSpecial?: boolean;
   style?: React.CSSProperties;
+  isFeatured?: boolean;
 }
 function CardCasa(props: CardCasaProps) {
+  const [showName, setShowName] = useState(false);
+
+  const handleMouseEnter = () => {
+    setShowName(true);
+  };
+
+  const handleMouseLeave = () => {
+    setShowName(false);
+  };
+
   const filledStars = props.stars ? Math.floor(props.stars) : 0;
   const stars = Array.from({ length: 5 }, (_, i) => (
     <span key={i}>
       <FontAwesomeIcon
         icon={faStar}
         color={i < filledStars ? "#f99304" : "#ddd"}
-        size="1x"
+        className="star-icon" // Adicione a classe CSS para estrelas
       />
     </span>
   ));
@@ -46,29 +58,32 @@ function CardCasa(props: CardCasaProps) {
   ));
   /*Substring > contagem de palavras até 200 */
   let description = props.description;
-    if (description.length > 150) {
-      description = description.substring(0, 150) + "...";
-}
+  if (description.length > 85) {
+    description = description.substring(0, 85) + "...";
+  }
   return (
+  <div className={`card--master--Casa ${props.isSpecial ? "special-card" : ""}`}>
     <div
-      className={`card--master--Casa ${props.isSpecial ? "special-card" : ""}`}
+      className={`card__corpo__Casa ${showName ? "show-name" : ""}`}
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
     >
-      <div className="card__corpo__Casa">
-        <a href={props.link} target="_blank" rel="noopener noreferrer">
-          <img
-            src={props.img}
-            className="card-imagem--Casa"
-            alt={props.title}
-          />
-        </a>
-        <h2 className={`card__titulo__Casa ${props.isSpecial ? "special-card" : ""}`}>
-          {props.title}
-        </h2>
-        <p className={`card__descricao__Casa ${props.isSpecial ? "special-card" : ""}`}>
-          {description}
-        </p>
-      </div>
-
+      {props.isFeatured && (
+        <div className="featured-label">
+          Mais Vendido
+          <div className={`label-name ${showName ? 'show-name' : ''}`}>em Box Ps4</div>
+        </div>
+      )}
+      <a href={props.link} target="_blank" rel="noopener noreferrer">
+        <img
+          src={props.img}
+          className={`card-imagem--Casa ${props.isFeatured ? "featured-card" : ""}`}
+          alt={props.title}
+        />
+      </a>
+      <h2 className={`card__titulo__Casa ${props.isSpecial ? "special-card" : ""}`}>
+        {props.title}
+      </h2>
       <div className="card__stars__Casa">
         <div className={`card__label__Casa ${props.label ? "has-label" : ""}`}>
           <div className="label__content__Casa">{props.label}</div>
@@ -77,12 +92,16 @@ function CardCasa(props: CardCasaProps) {
         {props.hearts && <div className="card__hearts__Casa">{hearts}</div>}
         {props.sales && <p>{props.sales}</p>}
       </div>
-      <a href={props.link} target="_blank" rel="noopener noreferrer">
-          <button className={`card__botao__Casa ${props.isSpecial ? "special-card" : ""}`}>
-              Adicionar ao carrinho
-          </button>
-        </a>
+      <p className={`card__descricao__Casa ${props.isSpecial ? "special-card" : ""}`}>
+        {(description)}
+      </p>
     </div>
+    <a href={props.link} target="_blank" rel="noopener noreferrer">
+      <button className={`card__botao__Casa ${props.isSpecial ? "special-card" : ""}`}>
+        Adicionar ao carrinho
+      </button>
+    </a>
+  </div>
   );
 }
 
@@ -129,7 +148,7 @@ function Cosmeticos() {
         <div className="grid--item--Casa">
           <div className="wrapper--Casa">
             <CardCasa
-              img="https://m.media-amazon.com/images/I/61RtXO3KspL._AC_SX296_SY426_FMwebp_QL65_.jpg"
+              img="https://images-na.ssl-images-amazon.com/images/G/32/OHL/Rainforest/CatTile/catiles-sbr-17.jpg"
               title="Baked Cod with Vegetables"
               description="Baked Cod with Vegetables. 30 minute meal!"
               stars={5}

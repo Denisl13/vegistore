@@ -1,28 +1,20 @@
-import "./Sidenav.css";
-import { useState } from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import "./Sidenav.css";
 
 function Sidenav() {
   const [isOpen, setIsOpen] = useState(false);
 
   const openNav = () => {
     setIsOpen(true);
-    const mySidenav = document.getElementById("mySidenav");
-    if (mySidenav) {
-      mySidenav.classList.add("open");
-    }
   };
 
   const closeNav = () => {
     setIsOpen(false);
-    const mySidenav = document.getElementById("mySidenav");
-    if (mySidenav) {
-      mySidenav.classList.remove("open");
-    }
   };
-/*================================================================= */
- const handleButtonClick = (text: string) => {
-    document.title = `Vegistore | ${text}`;//Aba título
+
+  const handleButtonClick = (text: string) => {
+    document.title = `Vegistore | ${text}`;
   };
 
   return (
@@ -35,7 +27,7 @@ function Sidenav() {
           color: "#f44336",
           fontFamily: "Montserrat, sans-serif",
           fontWeight: "bold",
-          marginRight: "8px",
+          marginRight: "8px"
         }}
         onClick={openNav}
       >
@@ -50,22 +42,13 @@ function Sidenav() {
             Home
           </Link>
 
-          <Link
-            to="/cosmeticos"
-            onClick={() => handleButtonClick("Cosméticos")}
-          >
-            Beleza
+          <Link to="/cosmeticos" onClick={() => handleButtonClick("Cosméticos")}>
+            Beleza e Cuidados Pessoais
           </Link>
-          <Link
-            to="/modafeminina"
-            onClick={() => handleButtonClick("Moda Feminina")}
-          >
-            Feminino
+          <Link to="/modafeminina" onClick={() => handleButtonClick("Moda Feminina")}>
+            Roupas Femininas
           </Link>
-          <Link
-            to="/casaedecoracao"
-            onClick={() => handleButtonClick("Casa & Decoração")}
-          >
+          <Link to="/casaedecoracao" onClick={() => handleButtonClick("Casa & Decoração")}>
             Casa & Decoração
           </Link>
           <Link to="/games" onClick={() => handleButtonClick("Games")}>

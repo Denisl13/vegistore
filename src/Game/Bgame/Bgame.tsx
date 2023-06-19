@@ -1,13 +1,28 @@
 import "./Bgame.css";
+import { Gameimages } from "./SliderBgame";
+import React, { useState, useEffect } from "react";
 
 function Bgame() {
+  const [currentImageIndex, setCurrentImageIndex] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentImageIndex((prevIndex) => (prevIndex + 1) % Gameimages.length);
+    }, 5000);
+
+    return () => clearInterval(interval);
+  }, []);
+
+  const currentImage = Gameimages[currentImageIndex];
+
+  
   return (
     <section
       className="featured__game"
       style={{
         backgroundSize: "cover",
         backgroundPosition: "center",
-        backgroundImage: `url(https://m.media-amazon.com/images/S/al-na-9d5791cf-3faf/dfeb61af-3e68-4288-9480-74b6e75fde76._CR0%2C0%2C3000%2C600_SX1500_.png)`,
+        backgroundImage: `url(${currentImage.image})`,
         transition: "background-image 0.5s ease",
       }}
     >

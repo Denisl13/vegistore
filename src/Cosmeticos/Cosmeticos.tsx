@@ -4,6 +4,7 @@ import Sep from "../Separador/Sep";
 import Footer from "../Footer/footer";
 import { Link } from "react-router-dom";
 import { useEffect } from "react";
+import { useState } from "react";
 import { NavHeader } from "../Header/header";
 import BvoltaTop from "../VoltaInicio/BvoltaTopo";
 import Bcosmeticos from "./BannerCosmeticos/Bcosm";
@@ -22,16 +23,26 @@ interface CardCosmeticosProps {
   className?: string;   //Card especial p Destaque
   isSpecial?: boolean; //identificar o cartão especial
   style?: React.CSSProperties;
+  isFeatured?: boolean;
 }
-//Estrelas
 function CardCosmeticos(props: CardCosmeticosProps) {
+  const [showName, setShowName] = useState(false);
+
+  const handleMouseEnter = () => {
+    setShowName(true);
+  };
+
+  const handleMouseLeave = () => {
+    setShowName(false);
+  };
+
   const filledStars = props.stars ? Math.floor(props.stars) : 0;
   const stars = Array.from({ length: 5 }, (_, i) => (
     <span key={i}>
       <FontAwesomeIcon
         icon={faStar}
         color={i < filledStars ? "#f99304" : "#ddd"}
-        size="1x"
+        className="star-icon" // Adicione a classe CSS para estrelas
       />
     </span>
   ));
@@ -48,30 +59,33 @@ function CardCosmeticos(props: CardCosmeticosProps) {
     </span>
   ));
   /*Substring > contagem de palavras até 200 */
-  let description = props.description;
-    if (description.length > 150) {
-      description = description.substring(0, 150) + "...";
-}
+let description = props.description;
+  if (description.length > 85) {
+    description = description.substring(0, 85) + "...";
+  }
   return (
+  <div className={`card--master--Cosmeticos ${props.isSpecial ? "special-card" : ""}`}>
     <div
-      className={`card--master--Cosmeticos ${props.isSpecial ? "special-card" : ""}`}
+      className={`card__corpo__Cosmeticos ${showName ? "show-name" : ""}`}
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
     >
-      <div className="card__corpo__Cosmeticos">
-        <a href={props.link} target="_blank" rel="noopener noreferrer">
-          <img
-            src={props.img}
-            className="card-imagem--Cosmeticos"
-            alt={props.title}
-          />
-        </a>
-        <h2 className={`card__titulo__Cosmeticos ${props.isSpecial ? "special-card" : ""}`}>
-          {props.title}
-        </h2>
-        <p className={`card__descricao__Cosmeticos ${props.isSpecial ? "special-card" : ""}`}>
-          {description}
-        </p>
-      </div>
-
+      {props.isFeatured && (
+        <div className="featured-label">
+          Mais Vendido
+          <div className={`label-name ${showName ? 'show-name' : ''}`}>em Box Ps4</div>
+        </div>
+      )}
+      <a href={props.link} target="_blank" rel="noopener noreferrer">
+        <img
+          src={props.img}
+          className={`card-imagem--Cosmeticos ${props.isFeatured ? "featured-card" : ""}`}
+          alt={props.title}
+        />
+      </a>
+      <h2 className={`card__titulo__Cosmeticos ${props.isSpecial ? "special-card" : ""}`}>
+        {props.title}
+      </h2>
       <div className="card__stars__Cosmeticos">
         <div className={`card__label__Cosmeticos ${props.label ? "has-label" : ""}`}>
           <div className="label__content__Cosmeticos">{props.label}</div>
@@ -80,12 +94,16 @@ function CardCosmeticos(props: CardCosmeticosProps) {
         {props.hearts && <div className="card__hearts__Cosmeticos">{hearts}</div>}
         {props.sales && <p>{props.sales}</p>}
       </div>
-      <a href={props.link} target="_blank" rel="noopener noreferrer">
-          <button className={`card__botao__Cosmeticos ${props.isSpecial ? "special-card" : ""}`}>
-              Adicionar ao carrinho
-          </button>
-        </a>
+      <p className={`card__descricao__Cosmeticos ${props.isSpecial ? "special-card" : ""}`}>
+        {(description)}
+      </p>
     </div>
+    <a href={props.link} target="_blank" rel="noopener noreferrer">
+      <button className={`card__botao__Cosmeticos ${props.isSpecial ? "special-card" : ""}`}>
+        Adicionar ao carrinho
+      </button>
+    </a>
+  </div>
   );
 }
 

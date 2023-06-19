@@ -1,4 +1,5 @@
 import { useEffect } from "react";
+import { useState } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { Link } from "react-router-dom";
 import Footer from "../../Footer/footer";
@@ -23,17 +24,27 @@ interface CardCosmPag1Props {
   className?: string;
   isSpecial?: boolean;
   style?: React.CSSProperties;
+  isFeatured?: boolean;
 }
 
-// Estrelas
 function CardCosmPag1(props: CardCosmPag1Props) {
+  const [showName, setShowName] = useState(false);
+
+  const handleMouseEnter = () => {
+    setShowName(true);
+  };
+
+  const handleMouseLeave = () => {
+    setShowName(false);
+  };
+
   const filledStars = props.stars ? Math.floor(props.stars) : 0;
   const stars = Array.from({ length: 5 }, (_, i) => (
     <span key={i}>
       <FontAwesomeIcon
         icon={faStar}
         color={i < filledStars ? "#f99304" : "#ddd"}
-        size="1x"
+        className="star-icon" // Adicione a classe CSS para estrelas
       />
     </span>
   ));
@@ -51,30 +62,33 @@ function CardCosmPag1(props: CardCosmPag1Props) {
   ));
   /*Substring > contagem de palavras até 200 */
   let description = props.description;
-    if (description.length > 150) {
-      description = description.substring(0, 150) + "...";
-}
+  if (description.length > 85) {
+    description = description.substring(0, 85) + "...";
+  }
 
   return (
-     <div
-      className={`card--master--ccPage1 ${props.isSpecial ? "special-card" : ""}`}
+  <div className={`card--master--ccPage1 ${props.isSpecial ? "special-card" : ""}`}>
+    <div
+      className={`card__corpo__ccPage1 ${showName ? "show-name" : ""}`}
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
     >
-      <div className="card__corpo__ccPage1">
-        <a href={props.link} target="_blank" rel="noopener noreferrer">
-          <img
-            src={props.img}
-            className="card-imagem--ccPage1"
-            alt={props.title}
-          />
-        </a>
-        <h2 className={`card__titulo__ccPage1 ${props.isSpecial ? "special-card" : ""}`}>
-          {props.title}
-        </h2>
-        <p className={`card__descricao__ccPage1 ${props.isSpecial ? "special-card" : ""}`}>
-          {description}
-        </p>
-      </div>
-
+      {props.isFeatured && (
+        <div className="featured-label">
+          Mais Vendido
+          <div className={`label-name ${showName ? 'show-name' : ''}`}>em Box Ps4</div>
+        </div>
+      )}
+      <a href={props.link} target="_blank" rel="noopener noreferrer">
+        <img
+          src={props.img}
+          className={`card-imagem--ccPage1 ${props.isFeatured ? "featured-card" : ""}`}
+          alt={props.title}
+        />
+      </a>
+      <h2 className={`card__titulo__ccPage1 ${props.isSpecial ? "special-card" : ""}`}>
+        {props.title}
+      </h2>
       <div className="card__stars__ccPage1">
         <div className={`card__label__ccPage1 ${props.label ? "has-label" : ""}`}>
           <div className="label__content__ccPage1">{props.label}</div>
@@ -83,12 +97,16 @@ function CardCosmPag1(props: CardCosmPag1Props) {
         {props.hearts && <div className="card__hearts__ccPage1">{hearts}</div>}
         {props.sales && <p>{props.sales}</p>}
       </div>
-      <a href={props.link} target="_blank" rel="noopener noreferrer">
-          <button className={`card__botao__ccPage1 ${props.isSpecial ? "special-card" : ""}`}>
-              Adicionar ao carrinho
-          </button>
-        </a>
+      <p className={`card__descricao__ccPage1 ${props.isSpecial ? "special-card" : ""}`}>
+        {(description)}
+      </p>
     </div>
+    <a href={props.link} target="_blank" rel="noopener noreferrer">
+      <button className={`card__botao__ccPage1 ${props.isSpecial ? "special-card" : ""}`}>
+        Adicionar ao carrinho
+      </button>
+    </a>
+  </div>
   );
 }
 // ScrollTop pagination

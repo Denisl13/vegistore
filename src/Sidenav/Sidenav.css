@@ -1,11 +1,13 @@
 .sidenav {
   position: fixed;
+  z-index: 999;
   top: 0;
   right: 0;
   height: 100%;
   width: 0;
   transition: 0.5s;
-
+  overflow-x: auto;
+  max-width: 100%;
   display: grid;
   overflow-x: hidden;
   background-color: #030303;
@@ -13,21 +15,16 @@
 }
 
 .sidenav.open {
-  width: 250px;
-  transition: 0.5s;
+  width: 400px;
 }
 
 .sidenav a {
-  margin-top: 0;
-  margin-bottom: 0;
-  text-decoration: none;
-  font-size: 20px;
-  color:  #ffffff;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 50px;
-  transition: 0.3s;
+  padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #818181;
+    display: block;
+    transition: 0.3s;
 }
 
 .sidenav a:hover {
@@ -60,10 +57,4 @@
   margin-top: 9.375em;
 }
 
-@media (min-width: 600px) {
-  /* Estilos para telas com largura de 600px ou mais */
-  .sidenav-span {
-    font-size: 16px;
-  }
-}
 

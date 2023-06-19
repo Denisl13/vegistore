@@ -1,4 +1,5 @@
 import "./Homepage.css";
+import { useState } from "react";
 import Sep from "../Separador/Sep";
 import Footer from "../Footer/footer";
 import BvoltaTop from "../VoltaInicio/BvoltaTopo";
@@ -17,15 +18,26 @@ interface HomePageProps {
   className?: string;  //Card especial p Destaque
   isSpecial?: boolean;//identificar o cartão especial
   style?: React.CSSProperties;
+  isFeatured?: boolean;
 }
 function CardHomepage(props: HomePageProps) {
+  const [showName, setShowName] = useState(false);
+
+  const handleMouseEnter = () => {
+    setShowName(true);
+  };
+
+  const handleMouseLeave = () => {
+    setShowName(false);
+  };
+
   const filledStars = props.stars ? Math.floor(props.stars) : 0;
   const stars = Array.from({ length: 5 }, (_, i) => (
     <span key={i}>
       <FontAwesomeIcon
         icon={faStar}
         color={i < filledStars ? "#f99304" : "#ddd"}
-        size="1x"
+        className="star-icon"
       />
     </span>
   ));
@@ -42,30 +54,33 @@ function CardHomepage(props: HomePageProps) {
     </span>
   ));
   /*Substring > contagem de palavras até 200 */
-  let description = props.description;
-    if (description.length > 150) {
-      description = description.substring(0, 150) + "...";
-}
+ let description = props.description;
+  if (description.length > 85) {
+    description = description.substring(0, 85) + "...";
+  }
   return (
+  <div className={`card--master--Homepage ${props.isSpecial ? "special-card" : ""}`}>
     <div
-      className={`card--master--Homepage ${props.isSpecial ? "special-card" : ""}`}
+      className={`card__corpo__Homepage ${showName ? "show-name" : ""}`}
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
     >
-      <div className="card__corpo__Homepage">
-        <a href={props.link} target="_blank" rel="noopener noreferrer">
-          <img
-            src={props.img}
-            className="card-imagem--Homepage"
-            alt={props.title}
-          />
-        </a>
-        <h2 className={`card__titulo__Homepage ${props.isSpecial ? "special-card" : ""}`}>
-          {props.title}
-        </h2>
-        <p className={`card__descricao__Homepage ${props.isSpecial ? "special-card" : ""}`}>
-          {description}
-        </p>
-      </div>
-
+      {props.isFeatured && (
+        <div className="featured-label">
+          Mais Vendido
+          <div className={`label-name ${showName ? 'show-name' : ''}`}>vichy o melhor</div>
+        </div>
+      )}
+      <a href={props.link} target="_blank" rel="noopener noreferrer">
+        <img
+          src={props.img}
+          className={`card-imagem--Homepage ${props.isFeatured ? "featured-card" : ""}`}
+          alt={props.title}
+        />
+      </a>
+      <h2 className={`card__titulo__Homepage ${props.isSpecial ? "special-card" : ""}`}>
+        {props.title}
+      </h2>
       <div className="card__stars__Homepage">
         <div className={`card__label__Homepage ${props.label ? "has-label" : ""}`}>
           <div className="label__content__Homepage">{props.label}</div>
@@ -74,30 +89,38 @@ function CardHomepage(props: HomePageProps) {
         {props.hearts && <div className="card__hearts__Homepage">{hearts}</div>}
         {props.sales && <p>{props.sales}</p>}
       </div>
-      <a href={props.link} target="_blank" rel="noopener noreferrer">
-          <button className={`card__botao__Homepage ${props.isSpecial ? "special-card" : ""}`}>
-              Adicionar ao carrinho
-          </button>
-        </a>
+      <p className={`card__descricao__Homepage ${props.isSpecial ? "special-card" : ""}`}>
+        {(description)}
+      </p>
     </div>
+    <a href={props.link} target="_blank" rel="noopener noreferrer">
+      <button className={`card__botao__Homepage ${props.isSpecial ? "special-card" : ""}`}>
+        Adicionar ao carrinho
+      </button>
+    </a>
+  </div>
   );
 }
-
+/*
+1-A medida que os textos aumentam, o componente "Card" também aumenta.
+2-Para ter um total de quatro cards, é necessário adicionar mais um card ao container.
+*/
 function Homepage() {
   return (
     <div className="grid--container--Homepage">
       <Sep title="Casa e Decoração" />
       <div className="grid-container-Homepage">
-        <div className="grid--item--Homepage item-1">
+        <div className="grid--item--Homepage">
           <div className="wrapper__Homepage">
             <CardHomepage
               img="https://m.media-amazon.com/images/I/51xYDrHoHbL._AC_SX466_.jpg"
               title="Máscara de Hidratação Lola Cosmetics "
-              description="Aproveite as ofertas na Amazon para adquirir produtos de beleza com desconto, como a Máscara Super Hidratante Morte Súbita da Lola Cosmetics. Essa máscara de nutrição é ideal para cabelos ressecados e danificados, proporcionando suavidade, força e desembaraço. Perfeita para uso diário e após processos de coloração, a máscara vem em embalagens de 450g e possui um aroma delicioso. Encontre essa excelente opção de cuidados com os cabelos no site da Amazon. Aproveite essa oportunidade agora!"
+              description="Aproveite as ofertas na Amazon para adquirir produtos de beleza com desconto, como a Máscara Super Hidratante Morte Súbita da Lola Cosmetics."
               hearts={3}
               sales="+5199"
               label="Até -70% off"
               link="https://amzn.to/3N2jO4q"
+              isFeatured={true}
             />
           </div>
         </div>
@@ -106,7 +129,7 @@ function Homepage() {
             <CardHomepage
               img="https://m.media-amazon.com/images/I/711OtVgfhYL._AC_SY450_.jpg"
               title="Máscara de Hidratação Lola Cosmetics "
-              description="Baked Cod with Vegetables. 30 minute meal!"
+              description="Aproveite as ofertas na Amazon para adquirir produtos de beleza com desconto, como a Máscara Super Hidratante Morte Súbita da Lola Cosmetics."
               stars={4}
               sales="+7831"
               label="Até 28% off"
@@ -118,7 +141,7 @@ function Homepage() {
             <CardHomepage
               img="https://m.media-amazon.com/images/I/81Ve6gN5waL._AC_SX522_.jpg"
               title="Máscara de Hidratação Lola Cosmetics "
-              description="Baked Cod with Vegetables. 30 minute meal!"
+              description="Aproveite as ofertas na Amazon para adquirir produtos de beleza com desconto, como a Máscara Super Hidratante Morte Súbita da Lola Cosmetics."
               stars={3}
               sales="+853"
             />

@@ -58,8 +58,8 @@ function CardGame(props: CardGameProps) {
   ));
 
   let description = props.description;
-  if (description.length > 100) {
-    description = description.substring(0, 100) + "...";
+  if (description.length > 85) {
+    description = description.substring(0, 85) + "...";
   }
 
 return (
@@ -105,18 +105,19 @@ return (
   </div>
   );
 }
+
 function Game() {
   return (
     <div className="grid--container--Game">
       <NavHeader />
-      <Bgame />
+      <Bgame/>
       <Sep title="Games e Consoles" />
       <div className="grid-container-Game">
         <div className="grid--item--Game item-1">
           <div className="wrapper__Game">
             <CardGame
               img="https://m.media-amazon.com/images/I/61es84xZGzL._AC_SX296_SY426_FMwebp_QL65_.jpg"
-              title="SOS LÁBIOS ESFOLIANTE LABIAL 3, 5GR TOP BEAUTY, Top Beauty"
+              title="Sos Lábios Esfoliante labial 3, 5gr TOP Beauty, Top Beauty"
               description="Mais de 200 compras na semana passada"
               stars={3}
               isFeatured={true}
@@ -139,7 +140,7 @@ function Game() {
           <div className="wrapper--Game">
             <CardGame
               img="https://m.media-amazon.com/images/I/51VZErxKwkL._AC_SX679_.jpg"
-              title="PlayStation®5 + God of War Ragnarök"
+              title="Console PlayStation®5"
               description="PlayStation5 SSD ultrarrápido: Maximize suas sessões de 200 jogo "
               hearts={5}
               sales="+1950 avaliações de clientes"
@@ -153,8 +154,8 @@ function Game() {
           <div className="wrapper--Game">
             <CardGame
               img="https://m.media-amazon.com/images/I/41lV8jRUrIL._SS400_.jpg"
-              title="PlayStation®5 + God of War Ragnarök"
-              description="PlayStation5 SSD ultrarrápido: Maximize suas sessões de jogo com tempo de carregamento praticamente instantâneo para jogos do PS5 instalados. Instantâneo para jogos do PS5 instalados."
+              title="Console Xbox Series S"
+              description="PlayStation5 SSD ultrarrápido: Maximize suas sessões."
               stars={5}
               sales="+1950 avaliações de clientes"
               label="-50%"
@@ -197,7 +198,7 @@ function Game() {
         <div className="grid--item--Game">
           <div className="wrapper--Game">
             <CardGame
-              img="https://images.unsplash.com/photo-1500995617113-cf789362a3e1?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80"
+              img="https://images.unsplash.com/photo-1542751371-adc38448a05e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80"
               title="Baked Cod with Vegetables"
               description="Baked Cod with Vegetables. 30 minute meal!"
               stars={4}

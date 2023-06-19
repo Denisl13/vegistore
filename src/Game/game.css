@@ -19,54 +19,45 @@
 .card--master--Game:hover .card__botao__Game.special-card{
   background-color: #F5C700;
   color: #3a310a;
-}/*FIM DO CARD ESPECIAL*/
+}
+/*------------------FIM DO CARD ESPECIAL---------------------------------------*/
 
 .grid--item--Game {
   display: flex;
   align-items: center;
   justify-content: center;
-
-  border-radius: 0.25rem;
   transition: transform 0.3s ease-in-out;
-
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
 }
 .grid--item--Game:hover {
   transform: scale(1.04);
 }
-.grid-container-Game {
+/*Container do card geral*/
+.grid-container-Game { 
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(12.5rem, 1fr));
-  grid-auto-rows: minmax(12.5rem, auto);
-  grid-auto-flow: dense;
-
-  grid-column-gap: 1.25rem;
-  gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+  margin: 0.5rem;
+  gap: 1.5rem;
   padding: 1rem;
-
-  /*font-family: "Oxygen", sans-serif;*/
-  color: #030303;
   background-color: #f5f5f5;
 }
 
 .card--master--Game {
-  overflow: hidden;
-  box-shadow: 0 2px 20px var(--clr-gray300);
   border-radius: var(--radius);
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
+  box-shadow: 0px 0px 10px 5px rgba(0, 0, 0, 0.5);
   cursor: pointer;
-  box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.5);
-  transition: transform 200ms ease-in;
 }
 /*Alinhamento da imagem ao centro*/
 .card__corpo__Game a {
   display: flex;
   justify-content: center;
-  padding: 0.5rem;
+  padding-top: 0.5rem;
+}
+/*imagem*/
+.card-imagem--Game {
+  height: 11rem;
+  max-width: 100%;
+  object-fit: cover;
+
 }
 /*Mais vendidos acima da imagem*/
 .wrapper__Game {
@@ -118,40 +109,29 @@
   border-color: transparent transparent #ffffff transparent;
   z-index: -1;
 }
-.wrapper__Game .card-img {
+/*.wrapper__Game .card-img {
   position: relative;
   z-index: 1;
 }
-
-/*imagem*/
-.card-imagem--Game {
-  height: 15rem;
-  max-width: 100%;
-  object-fit: cover;
-  border: none;
- 
-}
+*/
 /*espaço etiqueta e imagem*/
 .featured-card {
-  margin-top: 2rem;
+  margin-top: 0.5rem;
 }
 .card__titulo__Game {
-  font-weight: 500;
-  font-weight: bold;
-  font-size: 18px;
+  font-size: 16px;
   font-family: "BreuerText", sans-serif;
-  line-height: 25px;
-  padding: 0.8rem;
+  line-height: 20px;
+  padding: 0.6rem;
   color: #353535;
 }
 
 .card__descricao__Game {
-  font-weight: 400;
   font-size: 14px;
   font-family: "Myriad Pro", sans-serif;
   margin-top: 12px;
-  line-height: 18px;
-  padding: 0 0.8rem;
+  line-height: 20px;
+  padding: 0 0.6rem;
   color: #353535;
 }
 
@@ -170,14 +150,6 @@
   transition: background 200ms ease-in, color 200ms ease-in;
 }
 
-.card--master--Game {
-  transform: scale(1.02);
-}
-
-.card--master--Game:hover .card__botao__Game {
-  background: var(--clr-primary);
-  color: #ffffff;
-}
 /*Desconto sales*/
 .card__label__Game.has-label {
   background-color: #CC0C39;
@@ -238,14 +210,3 @@
 .card__hearts__Game span {
   animation: pulse 1.5s infinite;
 }
-
-@media (min-width: 600px) {
-  .wide {
-    grid-column: span 2;
-  }
-
-  .tall {
-    grid-row: span 2;
-  }
-}
-
