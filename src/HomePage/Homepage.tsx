@@ -61,7 +61,7 @@ function CardHomepage(props: HomePageProps) {
   if (description.length > 85) {
     description = description.substring(0, 85) + "...";
   }
-  return (
+return (
   <div className={`card--master--Homepage ${props.isSpecial ? "special-card" : ""}`}>
     <div
       className={`card__corpo__Homepage ${showName ? "show-name" : ""}`}
@@ -153,6 +153,8 @@ function Homepage() {
               description="Aproveite as ofertas na Amazon para adquirir produtos de beleza com desconto, como a Máscara Super Hidratante Morte Súbita da Lola Cosmetics."
               stars={3}
               sales="+853"
+              link="https://amzn.to/3X6yaEn"
+              isSpecial={true} // Cartão Especial
             />
           </div>
         </div>
