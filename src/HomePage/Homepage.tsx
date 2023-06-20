@@ -117,17 +117,17 @@ function Homepage() {
       <div className="grid-container-Homepage">
         <div className="grid--item--Homepage">
           <div className="wrapper__Homepage">
-            <CardHomepage
-              img="https://m.media-amazon.com/images/I/51xYDrHoHbL._AC_SX466_.jpg"
-              title="Máscara de Hidratação Lola Cosmetics "
-              description="Aproveite as ofertas na Amazon para adquirir produtos de beleza com desconto, como a Máscara Super Hidratante Morte Súbita da Lola Cosmetics."
-              hearts={3}
-              sales="+5199"
-              link="https://amzn.to/3N2jO4q"
-              isFeatured={true}//Sem isso não funciona
-              highlightText="Mais vendido"
-              customTitle="Muito Vicky"
-            />
+              <CardHomepage
+                img="https://m.media-amazon.com/images/I/51xYDrHoHbL._AC_SX466_.jpg"
+                title="Máscara de Hidratação Lola Cosmetics "
+                description="Aproveite as ofertas na Amazon para adquirir produtos de beleza com desconto, como a Máscara Super Hidratante Morte Súbita da Lola Cosmetics."
+                hearts={3}
+                sales="+5199"
+                link="https://amzn.to/3N2jO4q"
+                isFeatured={true}//Sem isso não funciona
+                highlightText="Mais vendido"
+                customTitle="Muito Vicky"
+              />
           </div>
         </div>
         <div className="grid--item--Homepage">
