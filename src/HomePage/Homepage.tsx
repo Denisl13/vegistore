@@ -11,15 +11,18 @@ interface HomePageProps {
   link?: string;
   title: string;
   description: string;
-  stars?: number;
-  hearts?: number;         
+  stars?: number; //strelas
+  hearts?: number; //coração    
   sales?: string;        //número de vendas
   label?: string;       //propriedade desconto
   className?: string;  //Card especial p Destaque
   isSpecial?: boolean;//identificar o cartão especial
   style?: React.CSSProperties;
-  isFeatured?: boolean;
+  isFeatured?: boolean; //verdadeiro ou false
+  highlightText?: string; //mais vendido
+  customTitle?: string; //vichky
 }
+/* Inicio isFeatured------------------------------------------------------ */
 function CardHomepage(props: HomePageProps) {
   const [showName, setShowName] = useState(false);
 
@@ -29,7 +32,7 @@ function CardHomepage(props: HomePageProps) {
 
   const handleMouseLeave = () => {
     setShowName(false);
-  };
+  };/* Fim isFeatured------------------------------------------------------ */
 
   const filledStars = props.stars ? Math.floor(props.stars) : 0;
   const stars = Array.from({ length: 5 }, (_, i) => (
@@ -65,10 +68,12 @@ function CardHomepage(props: HomePageProps) {
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >
-      {props.isFeatured && (
+      {props.isFeatured && ( /*É verdade ? sim então mostre (booleano (v)(f)*/
         <div className="featured-label">
-          Mais Vendido
-          <div className={`label-name ${showName ? 'show-name' : ''}`}>vichy o melhor</div>
+          {props.highlightText} {/*mais vendido */}
+          <div className={`label-name ${showName ? 'show-name' : ''}`}>
+            {props.customTitle} {/*vichky */}
+          </div>
         </div>
       )}
       <a href={props.link} target="_blank" rel="noopener noreferrer">
@@ -118,9 +123,10 @@ function Homepage() {
               description="Aproveite as ofertas na Amazon para adquirir produtos de beleza com desconto, como a Máscara Super Hidratante Morte Súbita da Lola Cosmetics."
               hearts={3}
               sales="+5199"
-              label="Até -70% off"
               link="https://amzn.to/3N2jO4q"
-              isFeatured={true}
+              isFeatured={true}//Sem isso não funciona
+              highlightText="Mais vendido"
+              customTitle="Muito Vicky"
             />
           </div>
         </div>
@@ -133,6 +139,20 @@ function Homepage() {
               stars={4}
               sales="+7831"
               label="Até 28% off"
+              isFeatured={true}
+              highlightText="Venda+"
+              customTitle="Vicky vaporube"
+            />
+          </div>
+        </div>
+        <div className="grid--item--Homepage">
+          <div className="wrapper--Homepage">
+            <CardHomepage
+              img="https://m.media-amazon.com/images/I/81Ve6gN5waL._AC_SX522_.jpg"
+              title="Máscara de Hidratação Lola Cosmetics "
+              description="Aproveite as ofertas na Amazon para adquirir produtos de beleza com desconto, como a Máscara Super Hidratante Morte Súbita da Lola Cosmetics."
+              stars={3}
+              sales="+853"
             />
           </div>
         </div>
@@ -155,7 +175,7 @@ function Homepage() {
             <CardHomepage
               img="https://m.media-amazon.com/images/I/41YZ+c64ZJL._AC_SY460_.jpg"
               title="Baked Cod with Vegetables"
-              description="Baked Cod with Vegetables. 30 minute meal!"
+              description="Aproveite as ofertas na Amazon para adquirir produtos de beleza com desconto, como a Máscara Super Hidratante Morte Súbita da Lola Cosmetics."
               stars={5}
               sales="+1053"
             />
@@ -166,7 +186,8 @@ function Homepage() {
             <CardHomepage
               img="https://images.pexels.com/photos/7234404/pexels-photo-7234404.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
               title="Baked Cod with Vegetables"
-              description="Baked Cod with Vegetables. 30 minute meal!"
+              description="Aproveite as ofertas na Amazon para adquirir produtos de beleza com desconto, como a Máscara Super Hidratante Morte Súbita da Lola Cosmetics."
+              sales="+5199"
               stars={4}
               isSpecial={true} // Cartão Especial
             />
@@ -177,8 +198,20 @@ function Homepage() {
             <CardHomepage
               img="https://m.media-amazon.com/images/I/71l4dtDWmAL._AC_SY450_.jpg"
               title="Baked Cod with Vegetables"
-              description="Baked Cod with Vegetables. 30 minute meal!"
+              sales="+5199"
+              description="Aproveite as ofertas na Amazon para adquirir produtos de beleza com desconto, como a Máscara Super Hidratante Morte Súbita da Lola Cosmetics."
               stars={3}
+            />
+          </div>
+        </div>
+        <div className="grid--item--Homepage">
+          <div className="wrapper--Homepage">
+            <CardHomepage
+              img="https://m.media-amazon.com/images/I/81Ve6gN5waL._AC_SX522_.jpg"
+              title="Máscara de Hidratação Lola Cosmetics "
+              description="Aproveite as ofertas na Amazon para adquirir produtos de beleza com desconto, como a Máscara Super Hidratante Morte Súbita da Lola Cosmetics."
+              stars={3}
+              sales="+853"
             />
           </div>
         </div>
@@ -190,8 +223,9 @@ function Homepage() {
             <CardHomepage
               img="https://m.media-amazon.com/images/I/71DydE15CZL._AC_SR350,526_FMwebp_QL65_.jpg"
               title="Baked Cod with Vegetables"
-              description="Baked Cod with Vegetables. 30 minute meal!"
+              description="Aproveite as ofertas na Amazon para adquirir produtos de beleza com desconto, como a Máscara Super Hidratante Morte Súbita da Lola Cosmetics."
               stars={5}
+              sales="+5199"
               link="https://www.amazon.com.br/Lingerie-Feminina-Sensual-Preto-Medium/dp/B09QBWYXMK/ref=mp_s_a_1_10?keywords=feminino&sr=8-10"
             />
           </div>
@@ -201,8 +235,9 @@ function Homepage() {
             <CardHomepage
               img="https://images.pexels.com/photos/6572958/pexels-photo-6572958.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
               title="Baked Cod with Vegetables"
-              description="Baked Cod with Vegetables. 30 minute meal!"
+              description="Aproveite as ofertas na Amazon para adquirir produtos de beleza com desconto, como a Máscara Super Hidratante Morte Súbita da Lola Cosmetics."
               stars={2}
+              sales="+5199"
             />
           </div>
         </div>
@@ -211,8 +246,20 @@ function Homepage() {
             <CardHomepage
               img="https://images.unsplash.com/photo-1601049541289-9b1b7bbbfe19?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=386&q=80"
               title="Baked Cod with Vegetables"
-              description="Baked Cod with Vegetables. 30 minute meal!"
+              description="Aproveite as ofertas na Amazon para adquirir produtos de beleza com desconto, como a Máscara Super Hidratante Morte Súbita da Lola Cosmetics."
               stars={3}
+              sales="+5199"
+            />
+          </div>
+        </div>
+        <div className="grid--item--Homepage">
+          <div className="wrapper--Homepage">
+            <CardHomepage
+              img="https://m.media-amazon.com/images/I/81Ve6gN5waL._AC_SX522_.jpg"
+              title="Máscara de Hidratação Lola Cosmetics "
+              description="Aproveite as ofertas na Amazon para adquirir produtos de beleza com desconto, como a Máscara Super Hidratante Morte Súbita da Lola Cosmetics."
+              stars={3}
+              sales="+853"
             />
           </div>
         </div>
@@ -224,8 +271,9 @@ function Homepage() {
             <CardHomepage
               img="https://images.unsplash.com/photo-1636138390765-c2497027eb89?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80"
               title="Baked Cod with Vegetables"
-              description="Baked Cod with Vegetables. 30 minute meal!"
+              description="Aproveite as ofertas na Amazon para adquirir produtos de beleza com desconto, como a Máscara Super Hidratante Morte Súbita da Lola Cosmetics."
               stars={5}
+              sales="+5199"
             />
           </div>
         </div>
@@ -234,8 +282,9 @@ function Homepage() {
             <CardHomepage
               img="https://images.unsplash.com/photo-1487798452839-c748a707a6b2?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=435&q=80"
               title="Baked Cod with Vegetables"
-              description="Baked Cod with Vegetables. 30 minute meal!"
+              description="Aproveite as ofertas na Amazon para adquirir produtos de beleza com desconto, como a Máscara Super Hidratante Morte Súbita da Lola Cosmetics."
               stars={2}
+              sales="+5199"
             />
           </div>
         </div>
@@ -244,8 +293,20 @@ function Homepage() {
             <CardHomepage
               img="https://images.unsplash.com/photo-1601049541289-9b1b7bbbfe19?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=386&q=80"
               title="Baked Cod with Vegetables"
-              description="Baked Cod with Vegetables. 30 minute meal!"
+              description="Aproveite as ofertas na Amazon para adquirir produtos de beleza com desconto, como a Máscara Super Hidratante Morte Súbita da Lola Cosmetics."
               stars={3}
+              sales="+5199"
+            />
+          </div>
+        </div>
+        <div className="grid--item--Homepage">
+          <div className="wrapper--Homepage">
+            <CardHomepage
+              img="https://m.media-amazon.com/images/I/81Ve6gN5waL._AC_SX522_.jpg"
+              title="Máscara de Hidratação Lola Cosmetics "
+              description="Aproveite as ofertas na Amazon para adquirir produtos de beleza com desconto, como a Máscara Super Hidratante Morte Súbita da Lola Cosmetics."
+              stars={3}
+              sales="+853"
             />
           </div>
         </div>
@@ -257,8 +318,9 @@ function Homepage() {
             <CardHomepage
               img="https://images.unsplash.com/photo-1636138390765-c2497027eb89?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80"
               title="Baked Cod with Vegetables"
-              description="Baked Cod with Vegetables. 30 minute meal!"
+              description="Aproveite as ofertas na Amazon para adquirir produtos de beleza com desconto, como a Máscara Super Hidratante Morte Súbita da Lola Cosmetics."
               stars={5}
+              sales="+5199"
             />
           </div>
         </div>
@@ -267,8 +329,9 @@ function Homepage() {
             <CardHomepage
               img="https://images.unsplash.com/photo-1487798452839-c748a707a6b2?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=435&q=80"
               title="Baked Cod with Vegetables"
-              description="Baked Cod with Vegetables. 30 minute meal!"
+              description="Aproveite as ofertas na Amazon para adquirir produtos de beleza com desconto, como a Máscara Super Hidratante Morte Súbita da Lola Cosmetics."
               stars={2}
+              sales="+5199"
             />
           </div>
         </div>
@@ -277,8 +340,20 @@ function Homepage() {
             <CardHomepage
               img="https://images.unsplash.com/photo-1601049541289-9b1b7bbbfe19?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=386&q=80"
               title="Baked Cod with Vegetables"
-              description="Baked Cod with Vegetables. 30 minute meal!"
+              description="Aproveite as ofertas na Amazon para adquirir produtos de beleza com desconto, como a Máscara Super Hidratante Morte Súbita da Lola Cosmetics."
               stars={3}
+              sales="+5199"
+            />
+          </div>
+        </div>
+        <div className="grid--item--Homepage">
+          <div className="wrapper--Homepage">
+            <CardHomepage
+              img="https://m.media-amazon.com/images/I/81Ve6gN5waL._AC_SX522_.jpg"
+              title="Máscara de Hidratação Lola Cosmetics "
+              description="Aproveite as ofertas na Amazon para adquirir produtos de beleza com desconto, como a Máscara Super Hidratante Morte Súbita da Lola Cosmetics."
+              stars={3}
+              sales="+853"
             />
           </div>
         </div>
