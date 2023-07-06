@@ -17,14 +17,16 @@ interface CardCosmPag2Props {
   link?: string;
   title: string;
   description: string;
-  stars?: number;
-  hearts?: number;
-  sales?: string; //número de vendas
-  label?: string; //propriedade desconto
-  className?: string; //Card especial p Destaque
-  isSpecial?: boolean; //identificar o cartão especial
+  stars?: number; //strelas
+  hearts?: number; //coração    
+  sales?: string;        //número de vendas
+  label?: string;       //propriedade desconto
+  className?: string;  //Card especial p Destaque
+  isSpecial?: boolean;//identificar o cartão especial
   style?: React.CSSProperties;
-  isFeatured?: boolean;
+  isFeatured?: boolean; //verdadeiro ou false
+  highlightText?: string; //mais vendido
+  customTitle?: string; //vichky
 }
 function CardCosmPag2(props: CardCosmPag2Props) {
   const [showName, setShowName] = useState(false);
@@ -59,9 +61,13 @@ function CardCosmPag2(props: CardCosmPag2Props) {
     </span>
   ));
   /*Substring > contagem de palavras até 200 */
-  let description = props.description;
+let description = props.description;
   if (description.length > 85) {
     description = description.substring(0, 85) + "...";
+  }
+   let title = props.title;
+  if (title.length > 65) {
+    title = title.substring(0, 65) + "...";
   }
 
   return (
@@ -71,10 +77,12 @@ function CardCosmPag2(props: CardCosmPag2Props) {
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >
-      {props.isFeatured && (
+      {props.isFeatured && ( /*É verdade ? sim então mostre (booleano (v)(f)*/
         <div className="featured-label">
-          Mais Vendido
-          <div className={`label-name ${showName ? 'show-name' : ''}`}>em Box Ps4</div>
+          {props.highlightText} {/*mais vendido */}
+          <div className={`label-name ${showName ? 'show-name' : ''}`}>
+            {props.customTitle} {/*vichky */}
+          </div>
         </div>
       )}
       <a href={props.link} target="_blank" rel="noopener noreferrer">
@@ -85,7 +93,7 @@ function CardCosmPag2(props: CardCosmPag2Props) {
         />
       </a>
       <h2 className={`card__titulo__ccPage2 ${props.isSpecial ? "special-card" : ""}`}>
-        {props.title}
+        {(title)}
       </h2>
       <div className="card__stars__ccPage2">
         <div className={`card__label__ccPage2 ${props.label ? "has-label" : ""}`}>
@@ -137,105 +145,111 @@ function CosmComPage2() {
       <div id="topo"></div>
       <NavHeader />
       <Bcosmeticos img={imageUrl} />
-      <Sep title="Perfumes" />
+      <Sep title="Cuidados com o Cabelo" />
       <div className="grid-container-Cosmeticos">
         <div className="grid--item--Cosmeticos item-1">
           <div className="wrapper__Cosmeticos">
             <CardCosmPag2
-              img="https://m.media-amazon.com/images/I/51xYDrHoHbL._AC_SX466_.jpg"
-              title="Vichy"
-              description="Baked Cod with Vegetables. 30 minute meal!"
+              img="https://m.media-amazon.com/images/I/61AdMYuh4fL._AC_SX679_.jpg"
+              title="Taiff Secador Style 2000W 127V Style 333 Preto Pequeno"
+              description="O secador Taiff Style Black é ideal para uso pessoal. Com potência de 2.000W, proporciona agilidade e rapidez na secagem e modelagem dos cabelos."
               stars={5}
-              sales="+5199"
-              label="-50%"
-              isSpecial={true} // Cartão Especial
-              link="https://amzn.to/3N2jO4q"
+              sales="+6335 avaliações de Clientes"
+              label="Sexadorde Cabelo Taiff"
+              link="https://amzn.to/3JMqfqx"
             />
           </div>
         </div>
         <div className="grid--item--Cosmeticos item-1">
           <div className="wrapper__Cosmeticos">
             <CardCosmPag2
-              img="https://m.media-amazon.com/images/I/51xYDrHoHbL._AC_SX466_.jpg"
-              title="Baked Cod with Vegetables"
-              description="Aproveite as ofertas na Amazon para adquirir produtos de beleza com desconto, como a Máscara Super Hidratante Morte Súbita da Lola Cosmetics. Essa máscara de nutrição é ideal para cabelos ressecados e danificados, proporcionando suavidade, força e desembaraço. Perfeita para uso diário e após processos de coloração, a máscara vem em embalagens de 450g e possui um aroma delicioso. Encontre essa excelente opção de cuidados com os cabelos no site da Amazon. Aproveite essa oportunidade agora!"
-              hearts={3}
-              sales="+/- 6524"
-              label="-70%"
-              link="+ Detalhes sobre o produto"
+              img="https://m.media-amazon.com/images/I/61RnyedqaXL._AC_SX679_.jpg"
+              title="Kit Wella Professionals Invigo Nutri-Enrich Salon Trio (3 Produtos)"
+              description="Kit de tratamento para cabelos secos, ressecados ou com química em tamanho salão. Wella Professionals Invigo Nutri-Enrich Salon Duo nutre e hidrata de maneira intensa para restaurar a saúde dos fios."
+              hearts={5}
+              sales="+1.404 avaliações de Clientes"
+              label="Wella Invigo Nutri Enrich"
+              link="https://amzn.to/3rnfRPm"
             />
           </div>
         </div>
         <div className="grid--item--Cosmeticos item-1">
           <div className="wrapper__Cosmeticos">
             <CardCosmPag2
-              img="https://m.media-amazon.com/images/I/711OtVgfhYL._AC_SY450_.jpg"
-              title="Baked Cod with Vegetables"
-              description="Baked Cod with Vegetables. 30 minute meal!"
+              img="https://m.media-amazon.com/images/I/61Qbillw1lL._AC_SX679_.jpg"
+              title="Truss Ultra Hydration Sh+Cd + Spec.Mask + U.Obg + Night Spa"
+              description="Indicado para cabelos danificados e ressecados. Limpa, restaura e hidrata os fios."
               stars={5}
-              sales="+30589"
+              label="-18%"
+              sales="+805 avaliações de Clientes"
+              link="https://amzn.to/3pCDP90"
             />
           </div>
         </div>
         <div className="grid--item--Cosmeticos item-1">
           <div className="wrapper__Cosmeticos">
             <CardCosmPag2
-              img="https://m.media-amazon.com/images/I/81Ve6gN5waL._AC_SX522_.jpg"
-              title="Baked Cod with Vegetables"
-              description="Baked Cod with Vegetables. 30 minute meal!"
+              img="https://m.media-amazon.com/images/I/51QXGDE0FSL._AC_SX569_.jpg"
+              title="Prancha Lizze Extreme Com Placa Revestida Em Titânio 127V"
+              description="Prancha com design ergonômico com alto desempenho, atingindo a temperatura de 465° F (240° C). Produto profissional ideal para progressivas. Formato arredondado ergonomicamente confortável e cabo giratório."
               stars={5}
-              sales="5248"
+              label="-7%"
+              sales="+1.599 avaliações de Clientes"
+               link="https://amzn.to/44dlmPh"
             />
           </div>
         </div>
       </div>
       {/*Final Bloco */}
-      <Sep title="Estojo de Maquiagem" />
       <div className="grid-container-Cosmeticos">
         <div className="grid--item--Cosmeticos item-1">
           <div className="wrapper__Cosmeticos">
             <CardCosmPag2
-              img="https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=887&q=80"
-              title="Baked Cod with Vegetables"
-              description="Baked Cod with Vegetables. 30 minute meal!"
+              img="https://m.media-amazon.com/images/I/71rDtYfVQkL._AC_SX679_.jpg"
+              title="Aparador de Pelos Philips 8 em 1 series 3000, Bivolt - MG3731/15"
+              description="Experimente um novo visual em qualquer dia da semana com este aparador completo e durável. Seis ferramentas de qualidade permitem que você crie com facilidade exatamente o estilo de barba que você deseja."
               stars={5}
-              sales="+5199"
-              label="-50%"
+              sales="+4.445 avaliações de Clientes"
+              link="https://amzn.to/3D1OsVZ"
             />
           </div>
         </div>
         <div className="grid--item--Cosmeticos item-1">
           <div className="wrapper__Cosmeticos">
             <CardCosmPag2
-              img="https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=887&q=80"
-              title="Baked Cod with Vegetables"
-              description="Baked Cod with Vegetables. 30 minute meal!"
+              img="https://m.media-amazon.com/images/I/51-eUhjhwkL._AC_SX679_.jpg"
+              title="Kérastase Óleo Elixir Ultime L'Huile Rose | Todos os tipos de cabelos | Nutrição, brilho | Mix de 4 Óleos Preciosos | 100 ml"
+              description="Oléo finalizador para cabelos coloridos com uma combinação excepcional de extrato de chá imperial e extrato de chá branco que oferece mais intensidade da cor. "
               stars={5}
-              sales="+/- 6524"
-              label="-70%"
+              sales="+2.351 avaliações de Clientes"
+              label="-16%"
+              link="https://amzn.to/3D31a6I"
             />
           </div>
         </div>
         <div className="grid--item--Cosmeticos item-1">
           <div className="wrapper__Cosmeticos">
             <CardCosmPag2
-              img="https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=887&q=80"
-              title="Baked Cod with Vegetables"
-              description="Baked Cod with Vegetables. 30 minute meal!"
+              img="https://m.media-amazon.com/images/I/6134-4MjhML._AC_SX679_.jpg"
+              title="Moiture Recovery Treatment Balm, Joico"
+              description="O Moisture Recovery Treatment Balm da Joico é um bálsamo de tratamento altamente hidratante."
               stars={5}
-              sales="+30589"
-              isSpecial={true} // Adicione a propriedade isSpecial como true para o cartão desejado
+              sales="+2.265 avaliações de Clientes"
+              label="-10%"
+              link="https://amzn.to/3Nxy44o"
             />
           </div>
         </div>
         <div className="grid--item--Cosmeticos item-1">
           <div className="wrapper__Cosmeticos">
             <CardCosmPag2
-              img="https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=887&q=80"
-              title="Baked Cod with Vegetables"
-              description="Baked Cod with Vegetables. 30 minute meal!"
+              img="https://m.media-amazon.com/images/I/51U0m-+ueOL._AC_SX679_.jpg"
+              title="Red Pro Modelador Instawave, Bivolt - Kiss New York"
+              description="O Modelador Instawave da RED PRO by KISS possui tecnologia diamante que proporciona cachos duradouros e com mais brilho. "
               stars={5}
-              sales="5248"
+               label="Menor preço dos últimos 30 dias"
+              sales="+579 avaliações de Clientes"
+               link="https://amzn.to/43dwpGT"
             />
           </div>
         </div>

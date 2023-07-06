@@ -10,17 +10,19 @@ import { useState } from "react";
 
 interface CardGameProps {
   img: string;
+  link?: string;
   title: string;
   description: string;
-  stars?: number;
-  hearts?: number;
-  link?: string;
-  sales?: string;
-  label?: string;
-  className?: string;
-  isSpecial?: boolean;
+  stars?: number; //strelas
+  hearts?: number; //coração    
+  sales?: string;        //número de vendas
+  label?: string;       //propriedade desconto
+  className?: string;  //Card especial p Destaque
+  isSpecial?: boolean;//identificar o cartão especial
   style?: React.CSSProperties;
-  isFeatured?: boolean;
+  isFeatured?: boolean; //verdadeiro ou false
+  highlightText?: string; //mais vendido
+  customTitle?: string; //vichky
 }
 
 function CardGame(props: CardGameProps) {
@@ -57,9 +59,14 @@ function CardGame(props: CardGameProps) {
     </span>
   ));
 
-  let description = props.description;
+  /*Substring > contagem de palavras até 200 */
+let description = props.description;
   if (description.length > 85) {
     description = description.substring(0, 85) + "...";
+  }
+   let title = props.title;
+  if (title.length > 65) {
+    title = title.substring(0, 65) + "...";
   }
 
 return (
@@ -69,10 +76,12 @@ return (
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >
-      {props.isFeatured && (
+      {props.isFeatured && ( /*É verdade ? sim então mostre (booleano (v)(f)*/
         <div className="featured-label">
-          Mais Vendido
-          <div className={`label-name ${showName ? 'show-name' : ''}`}>em Box Ps4</div>
+          {props.highlightText} {/*mais vendido */}
+          <div className={`label-name ${showName ? 'show-name' : ''}`}>
+            {props.customTitle} {/*vichky */}
+          </div>
         </div>
       )}
       <a href={props.link} target="_blank" rel="noopener noreferrer">
@@ -83,7 +92,7 @@ return (
         />
       </a>
       <h2 className={`card__titulo__Game ${props.isSpecial ? "special-card" : ""}`}>
-        {props.title}
+        {(title)}
       </h2>
       <div className="card__stars__Game">
         <div className={`card__label__Game ${props.label ? "has-label" : ""}`}>
@@ -116,36 +125,39 @@ function Game() {
         <div className="grid--item--Game item-1">
           <div className="wrapper__Game">
             <CardGame
-              img="https://m.media-amazon.com/images/I/61es84xZGzL._AC_SX296_SY426_FMwebp_QL65_.jpg"
-              title="Sos Lábios Esfoliante labial 3, 5gr TOP Beauty, Top Beauty"
-              description="Mais de 200 compras na semana passada"
-              stars={3}
-              isFeatured={true}
+              img="https://m.media-amazon.com/images/I/51rsXDAfI-L._AC_SX679_.jpg"
+              title="Console Microsoft Xbox Series X Premium Edition"
+              description="O Xbox mais poderoso do mundo em uma versão especial premium limitada. Inicie sua maior aventura com o Xbox Series X e Forza Horizon 5 Edição Premium."
+              stars={5}
+              sales="+17 avaliações de Clientes"
+              label="-9%"
+              link="https://amzn.to/46E3A9q"
             />
           </div>
         </div>  
         <div className="grid--item--Game">
           <div className="wrapper--Game">
             <CardGame
-              img="https://m.media-amazon.com/images/I/91t1G1UvSzL._AC_SX296_SY426_FMwebp_QL65_.jpg"
-              title="Baked Cod with Vegetables"
-              description="Leve mais, pague menos com o Super Receba até segunda-feira, 19 de jun.
-                          Frete GRÁTIS"
-              hearts={4}
-              sales="Mais de 200 compras na semana passada"
+              img="https://m.media-amazon.com/images/I/51m+U58kA7L._AC_SX679_.jpg"
+              title="GameSir G7 SE Wired Controller for PC, Xbox One, Xbox Series X|S, Plug and Play Gaming Gamepad with Hall Joysticks/Hall Trigger, 3.5mm Audio Jack"
+              description="Versatile Compatibility: Supports Xbox Series X/S, Xbox One X/S consoles, and PC Win10 and above (including the Steam game platform)."
+              hearts={5}
+              sales="+8.800 avaliações de Clientes"
+              label="1° mais vendido"
+              link="https://amzn.to/3JHIgpO"
             />
           </div>
         </div>
         <div className="grid--item--Game">
           <div className="wrapper--Game">
             <CardGame
-              img="https://m.media-amazon.com/images/I/51VZErxKwkL._AC_SX679_.jpg"
+              img="https://m.media-amazon.com/images/I/51+qnZm7V7L._AC_SX679_.jpg"
               title="Console PlayStation®5"
-              description="PlayStation5 SSD ultrarrápido: Maximize suas sessões de 200 jogo "
+              description="Play Has No Limits Jogar Não Tem Limites PlayStation5 O console PS5 oferece novas possibilidades de jogabilidade que você nunca imaginou. Reproduza jogos para PS5 e PS4 em Blu-ray Disc."
               hearts={5}
-              sales="+1950 avaliações de clientes"
-              label="-50%"
-              link="https://amzn.to/3X6yaEn"
+              sales="+648 avaliações de clientes"
+              label="Menor preço dos últimos 30 dias"
+              link="https://amzn.to/3ObDp33"
               isSpecial={true} // Cartão Especial
             />
           </div>
@@ -153,12 +165,13 @@ function Game() {
         <div className="grid--item--Game">
           <div className="wrapper--Game">
             <CardGame
-              img="https://m.media-amazon.com/images/I/41lV8jRUrIL._SS400_.jpg"
-              title="Console Xbox Series S"
-              description="PlayStation5 SSD ultrarrápido: Maximize suas sessões."
+              img="https://m.media-amazon.com/images/I/814aKQAodKL._AC_SY445_.jpg"
+              title="Minecraft Dungeons - Hero Edition (Inclui Hero Pass)"
+              description="Minecraft Dungeons - Hero Edition (Inclui Hero Pass)"
               stars={5}
-              sales="+1950 avaliações de clientes"
-              label="-50%"
+              sales="+1.456 avaliações de clientes"
+              label="-40%"
+              link="https://amzn.to/3pJmtqS"
             />
           </div>
         </div>
@@ -167,10 +180,13 @@ function Game() {
         <div className="grid--item--Game item1">
           <div className="wrapper__Game">
             <CardGame
-              img="https://m.media-amazon.com/images/I/711eymrSAML._AC_SX296_SY426_QL65_.jpg"
-              title="Horizon Forbidden West Edição Padrão - Playstation 4"
+              img="https://m.media-amazon.com/images/I/71GTPlP6QcL._AC_SX679_.jpg"
+              title="Gotham Knights BR - Standard Edition - Xbox Series X"
               description="Explore terras distantes, enfrente máquinas maiores e mais imponentes, e encontre novas tribos incríveis ao retornar para o futuro distante e pós-apocalíptico de Horizon."
               stars={5}
+              sales="+748 avaliações de clientes"
+              label="-56%"
+              link="https://amzn.to/46zbu41"
               isSpecial={true} // Cartão Especial
             />
           </div>
@@ -178,30 +194,36 @@ function Game() {
         <div className="grid--item--Game">
           <div className="wrapper--Game">
             <CardGame
-              img="https://m.media-amazon.com/images/I/81XveK+ycyL._AC_SX296_SY426_QL65_.jpg"
-              title="Baked Cod with Vegetables"
-              description="Baked Cod with Vegetables. 30 minute meal!"
-              stars={3}
+              img="https://m.media-amazon.com/images/I/61zAbNEgqrL._AC_SX679_.jpg"
+              title="Elden Ring - Xbox Series X"
+              description="Exploração do mundo nas Terras Intermédias: ELDEN RING apresenta vastos cenários fantásticos e complexas e escuras masmorras que se conectam de maneira fluida"
+              stars={5}
+              sales="+1542 avaliações de clientes"
+              link="https://amzn.to/44tYL0H"
             />
           </div>
         </div>
         <div className="grid--item--Game">
           <div className="wrapper--Game">
             <CardGame
-              img="https://m.media-amazon.com/images/I/61hB8jmc4tL._AC_UF1000,1000_QL80_FMwebp_.jpg"
-              title="Baked Cod with Vegetables"
-              description="Baked Cod with Vegetables. 30 minute meal!"
-              stars={1}
+              img="https://m.media-amazon.com/images/I/41dxVVHRNWL._AC_SX679_.jpg"
+              title="Controle DualSense - Branco"
+              description="Descubra uma profunda e imersiva experiência de jogo com o inovador DualSense"
+              stars={5}
+              sales="+8.433 avaliações de clientes"
+              link="https://amzn.to/3XB8Zu1"
             />
           </div>
         </div>
         <div className="grid--item--Game">
           <div className="wrapper--Game">
             <CardGame
-              img="https://images.unsplash.com/photo-1542751371-adc38448a05e?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=870&q=80"
-              title="Baked Cod with Vegetables"
-              description="Baked Cod with Vegetables. 30 minute meal!"
-              stars={4}
+              img="https://m.media-amazon.com/images/I/41z19ZnD8ZL._AC_SX679_.jpg"
+              title="Headset sem fio PULSE 3D - PlayStation 5"
+              description="Compatível com PlayStation 4, prepare-se para uma nova geração de áudio gamer com o headset sem fio PULSE 3D para PS5"
+              stars={5}
+              sales="+5.131 avaliações de clientes"
+              link="https://amzn.to/3JL3pj8"
             />
           </div>
         </div>

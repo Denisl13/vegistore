@@ -14,17 +14,19 @@ import { faHeart, faStar } from "@fortawesome/free-solid-svg-icons";
 // Interface para as propriedades do CardCosmPag1
 interface CardCosmPag1Props {
   img: string;
+  link?: string;
   title: string;
   description: string;
-  stars?: number;
-  hearts?: number;
-  link?: string;
-  sales?: string;
-  label?: string;
-  className?: string;
-  isSpecial?: boolean;
+  stars?: number; //strelas
+  hearts?: number; //coração    
+  sales?: string;        //número de vendas
+  label?: string;       //propriedade desconto
+  className?: string;  //Card especial p Destaque
+  isSpecial?: boolean;//identificar o cartão especial
   style?: React.CSSProperties;
-  isFeatured?: boolean;
+  isFeatured?: boolean; //verdadeiro ou false
+  highlightText?: string; //mais vendido
+  customTitle?: string; //vichky
 }
 
 function CardCosmPag1(props: CardCosmPag1Props) {
@@ -61,9 +63,13 @@ function CardCosmPag1(props: CardCosmPag1Props) {
     </span>
   ));
   /*Substring > contagem de palavras até 200 */
-  let description = props.description;
+ let description = props.description;
   if (description.length > 85) {
     description = description.substring(0, 85) + "...";
+  }
+   let title = props.title;
+  if (title.length > 65) {
+    title = title.substring(0, 65) + "...";
   }
 
   return (
@@ -73,10 +79,12 @@ function CardCosmPag1(props: CardCosmPag1Props) {
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >
-      {props.isFeatured && (
+      {props.isFeatured && ( /*É verdade ? sim então mostre (booleano (v)(f)*/
         <div className="featured-label">
-          Mais Vendido
-          <div className={`label-name ${showName ? 'show-name' : ''}`}>em Box Ps4</div>
+          {props.highlightText} {/*mais vendido */}
+          <div className={`label-name ${showName ? 'show-name' : ''}`}>
+            {props.customTitle} {/*vichky */}
+          </div>
         </div>
       )}
       <a href={props.link} target="_blank" rel="noopener noreferrer">
@@ -87,7 +95,7 @@ function CardCosmPag1(props: CardCosmPag1Props) {
         />
       </a>
       <h2 className={`card__titulo__ccPage1 ${props.isSpecial ? "special-card" : ""}`}>
-        {props.title}
+        {(title)}
       </h2>
       <div className="card__stars__ccPage1">
         <div className={`card__label__ccPage1 ${props.label ? "has-label" : ""}`}>
@@ -131,7 +139,7 @@ function CosmComPage1() {
     };
   }, []);
   //Carrega imagens do Banner por indice
-  const imageIndex = 3;
+  const imageIndex = 0;
   const imageUrl = Cosmeticoimages[imageIndex].image;
 
   return (
@@ -144,101 +152,108 @@ function CosmComPage1() {
         <div className="grid--item--Cosmeticos item-1">
           <div className="wrapper__Cosmeticos">
             <CardCosmPag1
-              img="https://m.media-amazon.com/images/I/51xYDrHoHbL._AC_SX466_.jpg"
-              title="Baked Cod with Vegetables"
-              description="Baked Cod with Vegetables. 30 minute meal!"
-              stars={5}
-              sales="+5199"
-              label="-50%"
-              isSpecial={true} // Cartão Especial
-              link="https://amzn.to/3N2jO4q"
+              img="https://m.media-amazon.com/images/I/51+xmaZiyBL._AC_SX679_.jpg"
+              title="ESTHEDERM Lift & Repair Creme Absolute Lissante 50 Ml"
+              description="LIFT & REPAIR, tecnologia avançada para correção de rugas e firmeza para uma pele visivelmente mais tonificada, lisa e revitalizada: rugas mais lisas e atenuadas, melhora do volume e contorno facil."
+              stars={4}
+              sales="+73 avaliações de Clientes"
+              label="-15%"
+              link="https://amzn.to/3PJUtOI"
             />
           </div>
         </div>
         <div className="grid--item--Cosmeticos item-1">
           <div className="wrapper__Cosmeticos">
             <CardCosmPag1
-              img="https://m.media-amazon.com/images/I/711OtVgfhYL._AC_SY450_.jpg"
-              title="Máscara de Hidratação Lola Cosmetics Morte Súbita 450g"
-              description="Aproveite as ofertas na Amazon para adquirir produtos de beleza com desconto, como a Máscara Super Hidratante Morte Súbita da Lola Cosmetics. Essa máscara de nutrição é ideal para cabelos ressecados e danificados, proporcionando suavidade, força e desembaraço. Perfeita para uso diário e após processos de coloração, a máscara vem em embalagens de 450g e possui um aroma delicioso. Encontre essa excelente opção de cuidados com os cabelos no site da Amazon. Aproveite essa oportunidade agora!"
-              hearts={3}
-              sales="+/- 6524"
-              label="-70%"
-              link="https://www.amazon.com.br/M%C3%A1scara-Hidratante-S%C3%BAbita-Lola-Cosmetics/dp/B074LTNQBP/ref=sr_1_8?__mk_pt_BR=%C3%85M%C3%85%C5%BD%C3%95%C3%91&keywords=cosmeticos&refinements=p_72%3A17833786011&rnid=5560472011&sr=8-8"
+              img="https://m.media-amazon.com/images/I/71Ay6FLLdlL._AC_SX679_.jpg"
+              title="Esthederm Intensive Hyaluronic - Sérum Anti-Idade 30ml"
+              description="Molécula naturalmente presente no organismo, o ácido hialurônico é um reservatório de hidratação e promove ação preenchedora."
+              hearts={5}
+              sales="+186 avaliações de Clientes"
+              label="Exclusivo Prime"
+              link="https://amzn.to/44vO3GX"
             />
           </div>
         </div>
         <div className="grid--item--Cosmeticos item-1">
           <div className="wrapper__Cosmeticos">
             <CardCosmPag1
-              img="https://m.media-amazon.com/images/I/81Ve6gN5waL._AC_SX522_.jpg"
-              title="Lola Cosmetics Vintage Girls - Creme Alisante 100g BLZ"
-              description="Aproveite as ofertas na Amazon para adquirir produtos de beleza com desconto, como a Máscara Super Hidratante Morte Súbita da Lola Cosmetics. Essa máscara de nutrição é ideal para cabelos ressecados e danificados, proporcionando suavidade, força e desembaraço. Perfeita para uso diário e após processos de coloração, a máscara vem em embalagens de 450g e possui um aroma delicioso. Encontre essa excelente opção de cuidados com os cabelos no site da Amazon. Aproveite essa oportunidade agora!"
+              img="https://m.media-amazon.com/images/I/71omNti2yVL._AC_SX679_.jpg"
+              title="Kiehl's Creme Ultra Facial 50 ml"
+              description="Marca Kiehl's, Ácido salicílico, Sem Perfume, Creme, Hidratação profunda para a pele, hidratação intensa."
               stars={5}
-              sales="+30589"
-              link="https://www.amazon.com.br/Creme-Alinsante-Vintage-Lola-Cosmetics/dp/B074LTRGN8/ref=sr_1_5?content-id=amzn1.sym.d7485298-0974-44ea-a5e5-22d8956c1761%3Aamzn1.sym.d7485298-0974-44ea-a5e5-22d8956c1761&keywords=cosmeticos+em+promo%C3%A7%C3%A3o&sr=8-5"
+              label="Beleza de Salão"
+              sales="+952 avaliações de Clientes"
+              link="https://amzn.to/3pJe0UC"
             />
           </div>
         </div>
         <div className="grid--item--Cosmeticos item-1">
           <div className="wrapper__Cosmeticos">
             <CardCosmPag1
-              img="https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=887&q=80"
-              title="Baked Cod with Vegetables"
-              description="Aproveite as ofertas na Amazon para adquirir produtos de beleza com desconto, como a Máscara Super Hidratante Morte Súbita da Lola Cosmetics. Essa máscara de nutrição é ideal para cabelos ressecados e danificados, proporcionando suavidade, força e desembaraço. Perfeita para uso diário e após processos de coloração, a máscara vem em embalagens de 450g e possui um aroma delicioso. Encontre essa excelente opção de cuidados com os cabelos no site da Amazon. Aproveite essa oportunidade agora!"
+              img="https://m.media-amazon.com/images/I/51b1DT6c1ML._AC_SX679_.jpg"
+              title="Sérum Noturno com Ácido Lático e Esqualano"
+              description="Esfolia e restaura para uma pele mais macia, iluminada e uniforme • Acelera o processo de renovação celular para que a pele tenha um glow natural de “acordei assim” • Restaura a aparência de pele, minimizando os efeitos dos agressores diários"
               stars={5}
-              sales="5248"
+              label="Economize R$20 no app"
+              sales="+254 avaliações de Clientes"
+               link="https://amzn.to/3XGkSii"
             />
           </div>
         </div>
       </div>
       {/*Final Bloco */}
-      <Sep title="Estojo de Maquiagem" />
       <div className="grid-container-Cosmeticos">
         <div className="grid--item--Cosmeticos item-1">
           <div className="wrapper__Cosmeticos">
             <CardCosmPag1
-              img="https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=887&q=80"
-              title="Baked Cod with Vegetables"
-              description="Baked Cod with Vegetables. 30 minute meal!"
+              img="https://m.media-amazon.com/images/I/516qcLVqtML._AC_SX679_.jpg"
+              title="Sérum Vichy Mineral 89 Probiotic Fractions 30ml"
+              description="+45% de Iluminosidade, +41% Elasticidade, -23% Linhas Finas"
               stars={5}
-              sales="+5199"
-              label="-50%"
+              isFeatured={true}//Sem isso não funciona
+              highlightText="Mais vendido"
+              customTitle="Sérum Vichy"
+              sales="+1.136 avaliações de Clientes"
+              link="https://amzn.to/3JPmu3t"
             />
           </div>
         </div>
         <div className="grid--item--Cosmeticos item-1">
           <div className="wrapper__Cosmeticos">
             <CardCosmPag1
-              img="https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=887&q=80"
-              title="Baked Cod with Vegetables"
-              description="Baked Cod with Vegetables. 30 minute meal!"
+              img="https://m.media-amazon.com/images/I/611be7agVXL._AC_SX679_.jpg"
+              title="Esthederm Intensive Hyaluronic Contour Yeux - Sérum para Área dos Olhos 15ml"
+              description="Reduz visivelmente as rugas e linhas finas, diminui bolsas e olheiras, redensifica e hidrata de forma duradoura"
               stars={5}
-              sales="+/- 6524"
-              label="-70%"
+              sales="+134 avaliações de Clientes"
+              label="-21%"
+              link="https://amzn.to/3O4cZAc"
             />
           </div>
         </div>
         <div className="grid--item--Cosmeticos item-1">
           <div className="wrapper__Cosmeticos">
             <CardCosmPag1
-              img="https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=887&q=80"
-              title="Baked Cod with Vegetables"
-              description="Baked Cod with Vegetables. 30 minute meal!"
+              img="https://m.media-amazon.com/images/I/61rLObVk4HL._AC_SX679_.jpg"
+              title="Filorga Optim-Eyes Creme Contorno De Olhos 15Ml Olheiras"
+              description="O Filorga Optim-Eyes Creme Contorno de Olhos é um produto altamente eficaz para combater olheiras. Com sua fórmula avançada, ele atua de forma intensiva na área dos olhos, reduzindo os sinais de fadiga e iluminando o olhar. "
               stars={5}
-              sales="+30589"
-              isSpecial={true} // Adicione a propriedade isSpecial como true para o cartão desejado
+              sales="+2.915 avaliações de Clientes"
+              link="https://amzn.to/3D5Mpju"
+              
             />
           </div>
         </div>
         <div className="grid--item--Cosmeticos item-1">
           <div className="wrapper__Cosmeticos">
             <CardCosmPag1
-              img="https://images.unsplash.com/photo-1522335789203-aabd1fc54bc9?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=887&q=80"
-              title="Baked Cod with Vegetables"
-              description="Baked Cod with Vegetables. 30 minute meal!"
+              img="https://m.media-amazon.com/images/I/71aY8aCLLKL._AC_SX679_.jpg"
+              title="Vichy Neovadiol Noite - Creme Anti-Idade Noturno 50ml"
+              description="O Vichy Neovadiol Noite é um poderoso creme anti-idade noturno. Sua fórmula exclusiva ajuda a redefinir os contornos faciais, combater a flacidez e reduzir rugas profundas durante o sono. Com textura luxuosa e de rápida absorção, proporciona uma pele mais firme, suave e revitalizada ao acordar."
               stars={5}
-              sales="5248"
+              sales="+393 avaliações de Clientes"
+              link="https://amzn.to/46veK0p"
             />
           </div>
         </div>

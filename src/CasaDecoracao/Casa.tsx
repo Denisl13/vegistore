@@ -115,43 +115,57 @@ function Cosmeticos() {
         <div className="grid--item--Casa item-1">
           <div className="wrapper__Casa">
             <CardCasa
-              img="https://m.media-amazon.com/images/I/51CxmiehQ7L._AC_SX296_SY426_FMwebp_QL65_.jpg"
-              title="Resfriamento com óleo mineral em montagens de PC"
-              description="O PC com óleo mineral oferece vários benefícios que o tornam uma boa opção.."
+              img="https://m.media-amazon.com/images/I/716GA5MQQkL._AC_SX425_.jpg"
+              title="WAP ROBOT W90 - Aspirador de Pó Robô, Automático 3 em 1 Varre, Aspira, Passa Pano, MOP para Limpeza, 30W, Bateria Recarregável, Bivolt, Preto"
+              description="Autonomia de 1h40 de duração.
+Escova giratória, ideal para cantos e MOP em microfibra, que pode ser lavado na máquina.
+3 em 1: Varre, Aspira e Passa pano.
+Modos de limpeza: Aleatório, Cantos e Espiral.
+Possui sensores de impacto e antiqueda, que redirecionam o aspirador quando encontra um obstáculo.
+Tipo : Robótico"
               stars={5}
+              sales="+3450 avaliações de Clientes"
+              label="Ranking dos mais vendidos"
+              link="https://amzn.to/3JLMVXX"
             />
           </div>
         </div>
         <div className="grid--item--Casa">
           <div className="wrapper--Casa">
             <CardCasa
-              img="https://m.media-amazon.com/images/I/51h2OiWrPKL._AC_SX296_SY426_FMwebp_QL65_.jpg"
-              title="Baked Cod with Vegetables"
-              description="Aproveite as ofertas na Amazon para adquirir produtos de beleza com desconto, como a Máscara Super Hidratante Morte Súbita da Lola Cosmetics. Essa máscara de nutrição é ideal para cabelos ressecados e danificados, proporcionando suavidade, força e desembaraço. Perfeita para uso diário e após processos de coloração, a máscara vem em embalagens de 450g e possui um aroma delicioso. Encontre essa excelente opção de cuidados com os cabelos no site da Amazon. Aproveite essa oportunidade agora!"
-              hearts={3}
-              sales="+7431"
-              label="-50%"
-              isSpecial={true} // Cartão Especial
-            />
-          </div>
-        </div>
-        <div className="grid--item--Casa">
-          <div className="wrapper--Casa">
-            <CardCasa
-              img="https://m.media-amazon.com/images/I/71h6YsOt9qL._AC_SX296_SY426_FMwebp_QL65_.jpg"
-              title="Baked Cod with Vegetables"
-              description="Baked Cod with Vegetables. 30 minute meal!"
-              stars={3}
-            />
-          </div>
-        </div>
-        <div className="grid--item--Casa">
-          <div className="wrapper--Casa">
-            <CardCasa
-              img="https://images-na.ssl-images-amazon.com/images/G/32/OHL/Rainforest/CatTile/catiles-sbr-17.jpg"
-              title="Baked Cod with Vegetables"
-              description="Baked Cod with Vegetables. 30 minute meal!"
+              img="https://m.media-amazon.com/images/I/51VffabeyEL.__AC_SX300_SY300_QL70_ML2_.jpg"
+              title="Umidificador de Ar Mondial, Comfort Air 6, Bivolt, Branco/Azul, 35W - UA-07"
+              description="Proporciona até 14 horas de uso contínuo Devido ao seu reservatório de 4L, econômico e supersilencioso Baixo consumo de energia para o seu conforto e bem- estar"
               stars={5}
+              sales="+880 avaliações de Clientes"
+              label="-38%"
+              link="https://amzn.to/46Dmbmk"
+            />
+          </div>
+        </div>
+        <div className="grid--item--Casa">
+          <div className="wrapper--Casa">
+            <CardCasa
+              img="https://m.media-amazon.com/images/I/51eXtPsPGYL._AC_SX466_.jpg"
+              title="Cooktop por Indução, Perfect Cuisine, Preto, 110v, Cadence"
+              description="Cozinhar sem preocupações finalmente se tornou possível! Chegou o Cooktop por Indução Perfect Cuisine da Cadence. Ele é feito para aqueles que precisam de praticidade, economia de espaço e eficiência."
+              stars={5}
+              sales="+1661 avaliações de Clientes"
+              label="Oferta Prime Day"
+              link="https://amzn.to/43bIeNR"
+            />
+          </div>
+        </div>
+        <div className="grid--item--Casa">
+          <div className="wrapper--Casa">
+            <CardCasa
+              img="https://m.media-amazon.com/images/I/81Rw7h8fZ5L._AC_SX522_.jpg"
+              title="Estante Livreiro com 5 nichos MULTY cor Branco - Artely"
+              description="Organizador é como podemos definir a Estante Multy. Útil, com 5 nichos espaçosos, nela você poderá organizar livros, porta-retratos e objetos decorativos conferindo beleza e modernidade ao ambiente."
+              stars={5}
+              sales="+1243 avaliações de Clientes"
+              label="1° mais vendido"
+              link="https://amzn.to/3XIdEdM"
             />
           </div>
         </div>
@@ -160,40 +174,52 @@ function Cosmeticos() {
         <div className="grid--item--Casa item1">
           <div className="wrapper__Casa">
             <CardCasa
-              img="https://m.media-amazon.com/images/I/711OtVgfhYL._AC_SY450_.jpg"
-              title="Baked Cod with Vegetables"
-              description="Baked Cod with Vegetables. 30 minute meal!"
+              img="https://m.media-amazon.com/images/I/51oHkVzhZjL._AC_SX522_.jpg"
+              title="Seladora Vacuo 110V"
+              description="Seladora a Vácuo Electrolux com três funções: Vácuo e Selar, Apenas Selar ou Pulsar. "
               stars={5}
+              sales="+900 avaliações de Clientes"
+              label="Menor preço dos últimos 30 dias"
+              link="https://amzn.to/3pAMEAc"
             />
           </div>
         </div>
         <div className="grid--item--Casa">
           <div className="wrapper--Casa">
             <CardCasa
-              img="https://m.media-amazon.com/images/I/71vJtkqhn+L._AC_SX296_SY426_QL65_.jpg"
-              title="Baked Cod with Vegetables"
-              description="Baked Cod with Vegetables. 30 minute meal!"
-              stars={3}
+              img="https://m.media-amazon.com/images/I/517oMuBINKL._AC_SX466_.jpg"
+              title="Ducha Eletrônica Fit Blindada 6500W 220V, Hydra, Branco, DPFT.EB.652BR"
+              description="A ducha Fit Blindada possui um espalhador médio especialmente projetado para que você tenha um banho com a intensidade e a quantidade certas de água, evitando desperdícios."
+              stars={5}
+              sales="+435 avaliações de Clientes"
+              label="-20%"
+              link="https://amzn.to/46NxecG"
             />
           </div>
         </div>
         <div className="grid--item--Casa">
           <div className="wrapper--Casa">
             <CardCasa
-              img="https://images.unsplash.com/photo-1558603668-6570496b66f8?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=464&q=80"
-              title="Baked Cod with Vegetables"
-              description="Baked Cod with Vegetables. 30 minute meal!"
-              stars={1}
+              img="https://m.media-amazon.com/images/I/618rfw6J09L._AC_SX569_.jpg"
+              title="Berço Portátil Mini Play, Safety 1st, Grey Denim"
+              description="Ideal para crianças com até 1 ano. Design compacto para ser usado em qualquer lugar. Duas alturas com zíper, que torna mais segura a distância entre a parede do berço e o colchonete."
+              stars={5}
+              sales="+1.326 avaliações de Clientes"
+              label="-27%"
+              link="https://amzn.to/46zt73L"
             />
           </div>
         </div>
         <div className="grid--item--Casa">
           <div className="wrapper--Casa">
             <CardCasa
-              img="https://images.unsplash.com/photo-1634822929331-ee4dc2c97fc4?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80"
-              title="Baked Cod with Vegetables"
-              description="Baked Cod with Vegetables. 30 minute meal!"
-              stars={4}
+              img="https://m.media-amazon.com/images/I/31iE9bQ0oIL._AC_SX522_.jpg"
+              title="Ventilador De Teto Arno Ultimate VX10 Branco 127v"
+              description="Controle remoto Ultra Slim (pilhas não incluídas) - 6 velocidades, função timer e dormir."
+              stars={5}
+              sales="+2.533 avaliações de Clientes"
+              label="-6%"
+              link="https://amzn.to/3pF4YIn"
             />
           </div>
         </div>

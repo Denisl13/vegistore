@@ -61,6 +61,10 @@ function CardHomepage(props: HomePageProps) {
   if (description.length > 85) {
     description = description.substring(0, 85) + "...";
   }
+   let title = props.title;
+  if (title.length > 65) {
+    title = title.substring(0, 65) + "...";
+  }
 return (
   <div className={`card--master--Homepage ${props.isSpecial ? "special-card" : ""}`}>
     <div
@@ -84,7 +88,7 @@ return (
         />
       </a>
       <h2 className={`card__titulo__Homepage ${props.isSpecial ? "special-card" : ""}`}>
-        {props.title}
+        {(title)}
       </h2>
       <div className="card__stars__Homepage">
         <div className={`card__label__Homepage ${props.label ? "has-label" : ""}`}>
@@ -118,54 +122,53 @@ function Homepage() {
         <div className="grid--item--Homepage">
           <div className="wrapper__Homepage">
               <CardHomepage
-                img="https://m.media-amazon.com/images/I/51xYDrHoHbL._AC_SX466_.jpg"
-                title="Máscara de Hidratação Lola Cosmetics "
-                description="Aproveite as ofertas na Amazon para adquirir produtos de beleza com desconto, como a Máscara Super Hidratante Morte Súbita da Lola Cosmetics."
-                hearts={3}
-                sales="+5199"
-                link="https://amzn.to/3N2jO4q"
+                img="https://m.media-amazon.com/images/I/917VnDov-fL._AC_SY450_.jpg"
+                title="Pillow Top 100% Algodão 200 Fios Extra Macio Casa Dona (Casal)"
+                description="Cobertura removível, 100 algodão, 40 x 75 x 40 cm; 2,8 Quilogramas, Maciez, Elasticidade, Conforto"
+                hearts={5}
+                sales="+3780"
+                link="https://amzn.to/3JJlWvY"
                 isFeatured={true}//Sem isso não funciona
                 highlightText="Mais vendido"
-                customTitle="Muito Vicky"
+                customTitle="Pillow Top"
               />
           </div>
         </div>
         <div className="grid--item--Homepage">
           <div className="wrapper--Homepage">
             <CardHomepage
-              img="https://m.media-amazon.com/images/I/711OtVgfhYL._AC_SY450_.jpg"
-              title="Máscara de Hidratação Lola Cosmetics "
-              description="Aproveite as ofertas na Amazon para adquirir produtos de beleza com desconto, como a Máscara Super Hidratante Morte Súbita da Lola Cosmetics."
+              img="https://m.media-amazon.com/images/I/71vJtkqhn+L._AC_SX522_.jpg"
+              title="Mesa de Escritório em L Estilo Industrial 1,50mX1,50m Kuadra, Trevalla, Preto Ônix/Est.Preta"
+              description="Mesa em L Kuadra Diretor 150X150X75cm Amadeirado / Est.Preta Marca reconhecida. Feito com materiais de qualidade, Fabricado com muito cuidado e atenção aos detalhes"
+              stars={5}
+              sales="+3780"
+              label="Exclusivo Prime"
+              link="https://amzn.to/3D1B04A"
+            />
+          </div>
+        </div>
+        <div className="grid--item--Homepage">
+          <div className="wrapper--Homepage">
+            <CardHomepage
+              img="https://m.media-amazon.com/images/I/81ewIKfY0pL._AC_SX522_.jpg"
+              title="Kit Casa Eficiente Positivo Casa Inteligente, mais economia para sua casa conectada, contém 4 itens, Bivolt – Compatível com Alexa"
+              description="Fácil instalação, sem técnicos ou furos na parede: faça você mesmo a instalação do seu kit casa eficiente; basta baixar o app da positivo casa inteligente, conectar ao Wi-Fi, e pronto!
+Crie regras e cenas: agende horários para ligar ou desligar seus aparelhos eletrônicos ou acender a iluminação da sua casa; crie cenas para deixar sua casa ainda mais inteligente"
               stars={4}
-              sales="+7831"
-              label="Até 28% off"
-              isFeatured={true}
-              highlightText="Venda+"
-              customTitle="Vicky vaporube"
+              sales="+1055"
+              link="https://amzn.to/3NG8iuF"
             />
           </div>
         </div>
         <div className="grid--item--Homepage">
           <div className="wrapper--Homepage">
             <CardHomepage
-              img="https://m.media-amazon.com/images/I/81Ve6gN5waL._AC_SX522_.jpg"
-              title="Máscara de Hidratação Lola Cosmetics "
-              description="Aproveite as ofertas na Amazon para adquirir produtos de beleza com desconto, como a Máscara Super Hidratante Morte Súbita da Lola Cosmetics."
-              stars={3}
-              sales="+853"
-              link="https://amzn.to/3X6yaEn"
-              isSpecial={true} // Cartão Especial
-            />
-          </div>
-        </div>
-        <div className="grid--item--Homepage">
-          <div className="wrapper--Homepage">
-            <CardHomepage
-              img="https://m.media-amazon.com/images/I/81Ve6gN5waL._AC_SX522_.jpg"
-              title="Máscara de Hidratação Lola Cosmetics "
-              description="Aproveite as ofertas na Amazon para adquirir produtos de beleza com desconto, como a Máscara Super Hidratante Morte Súbita da Lola Cosmetics."
-              stars={3}
-              sales="+853"
+              img="https://m.media-amazon.com/images/I/51Fc5p3Y3aL._AC_SX425_.jpg"
+              title="Pingoo.Casa, Ducha Chuveiro Com Desviador, Quadrado, Aço Inox 304, 20Cm, Mundaú, Prata"
+              description="DURABILIDADE: A ducha chuveiro com desviador Mundaú é fabricada em aço inoxidável 304, mede 20 cm x 20 cm e braço 40 cm. Possui acabamento triplo de alta resistência à corrosão, conservando suas características originais e beleza por mais tempo."
+              stars={4}
+              sales="+19"
+              link="https://amzn.to/3NLTFX4"
             />
           </div>
         </div>
@@ -175,45 +178,58 @@ function Homepage() {
         <div className="grid--item--Homepage item-1">
           <div className="wrapper__Homepage">
             <CardHomepage
-              img="https://m.media-amazon.com/images/I/41YZ+c64ZJL._AC_SY460_.jpg"
-              title="Baked Cod with Vegetables"
-              description="Aproveite as ofertas na Amazon para adquirir produtos de beleza com desconto, como a Máscara Super Hidratante Morte Súbita da Lola Cosmetics."
+              img="https://m.media-amazon.com/images/I/418SDTNP7xL._AC_SY450_.jpg"
+              title="L'Oréal Professionnel Óleo 10 em 1 Absolut Repair | Multi-benefícios para cabelos secos e danificados | Repara e Promove Brilho | Com Gold Quinoa e Proteínas | 90ml"
+              description="1 ação 10 benefícios: 1. Nutre o cabelo. 2. Retoma a fibra instantaneamente. 3. Deixa os cabelos com um toque leve 4. Deixa os fios mais macios. 5. Desembaraça o cabelo. 6. Condi…"
               stars={5}
-              sales="+1053"
+              label="1°mais vendido"
+              sales="+3275"
+              link="https://amzn.to/3XChK70"
             />
           </div>
         </div>
         <div className="grid--item--Homepage">
           <div className="wrapper--Homepage">
             <CardHomepage
-              img="https://images.pexels.com/photos/7234404/pexels-photo-7234404.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
-              title="Baked Cod with Vegetables"
-              description="Aproveite as ofertas na Amazon para adquirir produtos de beleza com desconto, como a Máscara Super Hidratante Morte Súbita da Lola Cosmetics."
-              sales="+5199"
+              img="https://m.media-amazon.com/images/I/71q1Fjs5SaL._AC_SX679_.jpg"
+              title="L'Oréal Professionnel Máscara Capilar Absolut Repair | Tratamento Capilar Proteico Para Nutrição Profunda | Hidrata, Repara Danos e Acrescenta Brilho | Para Cabelos Secos e Danificados | 500g"
+              description="Vantagens do Produto: 77% menos danos*; 7x mais brilho**; Toque leve e macio."
+              sales="+750"
               stars={4}
-              isSpecial={true} // Cartão Especial
+              label="Oferta"
+              link="https://amzn.to/3PFE6Th"
             />
           </div>
         </div>
         <div className="grid--item--Homepage">
           <div className="wrapper--Homepage">
             <CardHomepage
-              img="https://m.media-amazon.com/images/I/71l4dtDWmAL._AC_SY450_.jpg"
-              title="Baked Cod with Vegetables"
-              sales="+5199"
-              description="Aproveite as ofertas na Amazon para adquirir produtos de beleza com desconto, como a Máscara Super Hidratante Morte Súbita da Lola Cosmetics."
-              stars={3}
+              img="https://m.media-amazon.com/images/I/51KoGFYvmPL._AC_SX679_.jpg"
+              title="ESCOVA SECADORA SOFT BEC07R BIV"
+              sales="+2699"
+              description="Este produto possui uma chave seletora de tensão (127V ou 220V), ou seja, dependendo da tensão de rede na região do consumidor, a chave seletora deve estar corretamente selecionada, sendo para 127V ou para 220V."
+              isFeatured={true}//Sem isso não funciona
+              highlightText="Mais vendido"
+              customTitle="Escova Rotativa"
+              stars={5}
+              link="https://amzn.to/43bBzDo"
             />
           </div>
         </div>
         <div className="grid--item--Homepage">
           <div className="wrapper--Homepage">
             <CardHomepage
-              img="https://m.media-amazon.com/images/I/81Ve6gN5waL._AC_SX522_.jpg"
-              title="Máscara de Hidratação Lola Cosmetics "
-              description="Aproveite as ofertas na Amazon para adquirir produtos de beleza com desconto, como a Máscara Super Hidratante Morte Súbita da Lola Cosmetics."
-              stars={3}
-              sales="+853"
+              img="https://m.media-amazon.com/images/I/61DXeeH5kPL._AC_SX679_.jpg"
+              title="Taiff Modelador Curves 25 mm, Bivolt automático2, Preto"
+              description="Bivolt automático
+Tecnologia cerâmica
+Led indicador de ligado
+Cabo 3 metros, produto bivolt
+Diâmetro do tubo do modelador: 25 milímetros"
+              stars={5}
+              label="1°mais vendido"
+              sales="+8.563"
+              link="https://amzn.to/3pu24pZ"
             />
           </div>
         </div>
@@ -223,45 +239,50 @@ function Homepage() {
         <div className="grid--item--Homepage item-1">
           <div className="wrapper__Homepage">
             <CardHomepage
-              img="https://m.media-amazon.com/images/I/71DydE15CZL._AC_SR350,526_FMwebp_QL65_.jpg"
-              title="Baked Cod with Vegetables"
+              img="https://m.media-amazon.com/images/I/61m4aVc0j3L._AC_SX522_.jpg"
+              title="Calça legging, Max, Lupo, Feminino"
+              description="Encare seus treinos e corridas de uma forma leve e descontraída com a Calça Legging Lupo Sport Max Core. Elaborada tecido sem costuras, possui um ajuste suave valorizando a silhueta feminina."
+              isFeatured={true}//Sem isso não funciona
+              highlightText="Mais vendido"
+              customTitle="Leggings esportiva "
+              stars={5}
+              sales="+1247"
+              link="https://amzn.to/3O2pWdM"
+            />
+          </div>
+        </div>
+        <div className="grid--item--Homepage">
+          <div className="wrapper--Homepage">
+            <CardHomepage
+              img="https://m.media-amazon.com/images/I/61cGvpngpIL._AC_SX522_.jpg"
+              title="Kit 10 Calcinhas Femininas Cós Alto - Compressão para Barriga Cintura Alta, Calcinha Modeladora, Forro 100% Algodão - VIÉRE"
+              description="【DESIGN APROVADO POR ESPECIALISTAS】 Com seu design exclusivo, esta calcinha cumpre todas os quesitos para quem deseja um controle de barriga resistente com elasticidade suficiente."
+              stars={5}
+              sales="+1.073"
+              link="https://amzn.to/3rfc4Um"
+            />
+          </div>
+        </div>
+        <div className="grid--item--Homepage">
+          <div className="wrapper--Homepage">
+            <CardHomepage
+              img="https://m.media-amazon.com/images/I/41FRD2q2ELL._AC_SX522_.jpg"
+              title="Kit 12 Calcinhas AF Biquini, Trifil, Feminino"
               description="Aproveite as ofertas na Amazon para adquirir produtos de beleza com desconto, como a Máscara Super Hidratante Morte Súbita da Lola Cosmetics."
               stars={5}
-              sales="+5199"
-              link="https://www.amazon.com.br/Lingerie-Feminina-Sensual-Preto-Medium/dp/B09QBWYXMK/ref=mp_s_a_1_10?keywords=feminino&sr=8-10"
+              sales="+3.046"
+              link="https://amzn.to/43iH96N"
             />
           </div>
         </div>
         <div className="grid--item--Homepage">
           <div className="wrapper--Homepage">
             <CardHomepage
-              img="https://images.pexels.com/photos/6572958/pexels-photo-6572958.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
-              title="Baked Cod with Vegetables"
-              description="Aproveite as ofertas na Amazon para adquirir produtos de beleza com desconto, como a Máscara Super Hidratante Morte Súbita da Lola Cosmetics."
-              stars={2}
-              sales="+5199"
-            />
-          </div>
-        </div>
-        <div className="grid--item--Homepage">
-          <div className="wrapper--Homepage">
-            <CardHomepage
-              img="https://images.unsplash.com/photo-1601049541289-9b1b7bbbfe19?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=386&q=80"
-              title="Baked Cod with Vegetables"
-              description="Aproveite as ofertas na Amazon para adquirir produtos de beleza com desconto, como a Máscara Super Hidratante Morte Súbita da Lola Cosmetics."
-              stars={3}
-              sales="+5199"
-            />
-          </div>
-        </div>
-        <div className="grid--item--Homepage">
-          <div className="wrapper--Homepage">
-            <CardHomepage
-              img="https://m.media-amazon.com/images/I/81Ve6gN5waL._AC_SX522_.jpg"
-              title="Máscara de Hidratação Lola Cosmetics "
-              description="Aproveite as ofertas na Amazon para adquirir produtos de beleza com desconto, como a Máscara Super Hidratante Morte Súbita da Lola Cosmetics."
-              stars={3}
-              sales="+853"
+              img="https://m.media-amazon.com/images/I/61qyWJ6kMwL._AC_SY500_.jpg"
+              title="NEYOUQE Camiseta feminina Color Block solta manga longa/curta casual confortável"
+              description="Material: As túnicas são feitas de material macio e confortável. Estas camisetas combinam bem com jeans, calças, leggings jeans skinny."
+              stars={4}
+              sales="+7.254"
             />
           </div>
         </div>
@@ -271,44 +292,54 @@ function Homepage() {
         <div className="grid--item--Homepage item-1">
           <div className="wrapper__Homepage">
             <CardHomepage
-              img="https://images.unsplash.com/photo-1636138390765-c2497027eb89?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80"
-              title="Baked Cod with Vegetables"
-              description="Aproveite as ofertas na Amazon para adquirir produtos de beleza com desconto, como a Máscara Super Hidratante Morte Súbita da Lola Cosmetics."
+              img="https://m.media-amazon.com/images/I/51+qnZm7V7L._AC_SX679_.jpg"
+              title="Console PlayStation 5"
+              description="Na velocidade da luz Aproveite o carregamento extremamente rápido com o SSD de altíssima velocidade"
+              isFeatured={true}//Sem isso não funciona
+              highlightText="Mais vendido"
+              customTitle="1°mais vendido"
               stars={5}
-              sales="+5199"
+              label="Menor preço dos últimos 30 dias"
+              sales="+645"
+              link="https://amzn.to/44xbhfT"
             />
           </div>
         </div>
         <div className="grid--item--Homepage">
           <div className="wrapper--Homepage">
             <CardHomepage
-              img="https://images.unsplash.com/photo-1487798452839-c748a707a6b2?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=435&q=80"
-              title="Baked Cod with Vegetables"
-              description="Aproveite as ofertas na Amazon para adquirir produtos de beleza com desconto, como a Máscara Super Hidratante Morte Súbita da Lola Cosmetics."
-              stars={2}
-              sales="+5199"
+              img="https://m.media-amazon.com/images/I/61eYoSqkHnL._AC_SX679_.jpg"
+              title="Console Xbox Series X"
+              description="Console Xbox mais rápido e poderoso de todos os tempos. Saiba Mais..."
+              stars={5}
+              label="-6%"
+              sales="+3.412"
+              link="https://amzn.to/44rileB"
             />
           </div>
         </div>
         <div className="grid--item--Homepage">
           <div className="wrapper--Homepage">
             <CardHomepage
-              img="https://images.unsplash.com/photo-1601049541289-9b1b7bbbfe19?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=386&q=80"
-              title="Baked Cod with Vegetables"
-              description="Aproveite as ofertas na Amazon para adquirir produtos de beleza com desconto, como a Máscara Super Hidratante Morte Súbita da Lola Cosmetics."
+              img="https://m.media-amazon.com/images/I/41dxVVHRNWL._AC_SX679_.jpg"
+              title="Controle DualSense - Branco"
+              description="Descubra uma profunda e imersiva experiência de jogo com o inovador DualSense"
               stars={3}
-              sales="+5199"
+              label="Economize R$20 na sua compra "
+              sales="+8.432"
+              link="https://amzn.to/43clkGb"
             />
           </div>
         </div>
         <div className="grid--item--Homepage">
           <div className="wrapper--Homepage">
             <CardHomepage
-              img="https://m.media-amazon.com/images/I/81Ve6gN5waL._AC_SX522_.jpg"
-              title="Máscara de Hidratação Lola Cosmetics "
-              description="Aproveite as ofertas na Amazon para adquirir produtos de beleza com desconto, como a Máscara Super Hidratante Morte Súbita da Lola Cosmetics."
-              stars={3}
-              sales="+853"
+              img="https://m.media-amazon.com/images/I/610Nmqcs1sL._AC_SX679_.jpg"
+              title="Volante Logitech G29 Driving Force para PS5, PS4, PS3 e PC"
+              description="Projetado para compatibilidade com PS5, PS4, PS3 e PC. Adicione o Driving Force ao seu controle e você nunca mais vai querer correr com outro controle normal novamente. O G29 Driving Force também funciona em PC e jogos compatíveis."
+              stars={5}
+              sales="+5.489"
+              link="https://amzn.to/3D0a9pn"
             />
           </div>
         </div>
@@ -318,44 +349,59 @@ function Homepage() {
         <div className="grid--item--Homepage item-1">
           <div className="wrapper__Homepage">
             <CardHomepage
-              img="https://images.unsplash.com/photo-1636138390765-c2497027eb89?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80"
-              title="Baked Cod with Vegetables"
-              description="Aproveite as ofertas na Amazon para adquirir produtos de beleza com desconto, como a Máscara Super Hidratante Morte Súbita da Lola Cosmetics."
+              img="https://m.media-amazon.com/images/I/51fAmmSJcUL._AC_SX569_.jpg"
+              title="Celular Xiaomi Redmi Note 12 128GB / 6GB RAM/Dual Sim/TelaP e 13MP - Onyx Gray - Preto"
+              description="Carregador Padrão Brasileiro ou EUA, enviado conforme disponibilidade."
               stars={5}
-              sales="+5199"
+              label="1°mais vendido"
+              sales="+3.710"
+               link="https://amzn.to/3pzpp9w"
             />
           </div>
         </div>
         <div className="grid--item--Homepage">
           <div className="wrapper--Homepage">
             <CardHomepage
-              img="https://images.unsplash.com/photo-1487798452839-c748a707a6b2?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=435&q=80"
-              title="Baked Cod with Vegetables"
-              description="Aproveite as ofertas na Amazon para adquirir produtos de beleza com desconto, como a Máscara Super Hidratante Morte Súbita da Lola Cosmetics."
-              stars={2}
-              sales="+5199"
+              img="https://m.media-amazon.com/images/I/41sXy3GyjAL._AC_SX569_.jpg"
+              title="Copo térmico de cerveja com tampa Stanley|473ml"
+              description="Preserva o estilo aventureiro, mas sem abrir mão da descontração? Parabéns, porque fizemos este Copo Térmico de Cerveja Stanley pensando em você! Resistente, durável e atemporal, com preservação térmica de até 4,5 horas"
+              stars={5}
+              isFeatured={true}//Sem isso não funciona
+              highlightText="Mais vendido"
+              customTitle="Stanley"
+              label="-32%"
+              sales="+14.352"
+               link="https://amzn.to/43eFLCq"
             />
           </div>
         </div>
         <div className="grid--item--Homepage">
           <div className="wrapper--Homepage">
             <CardHomepage
-              img="https://images.unsplash.com/photo-1601049541289-9b1b7bbbfe19?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=386&q=80"
-              title="Baked Cod with Vegetables"
-              description="Aproveite as ofertas na Amazon para adquirir produtos de beleza com desconto, como a Máscara Super Hidratante Morte Súbita da Lola Cosmetics."
-              stars={3}
-              sales="+5199"
+              img="https://m.media-amazon.com/images/I/51tqdlQSgqL._AC_SX569_.jpg"
+              title="Xiaomi POCO X5 5G Smartphone Dual Sim 256GB Memory 8GB RAM 6.67 AMOLED Display 5000mAh 48MP+13MP CAM (preto)"
+              description="-6,67 AMOLED FHD+ DotDisplay for Outstanding Visuals: POCO X5 5G apresenta um display elegante AMOLED de 120Hz, destacando-se da concorrência. Desfrute de visuais ricos e desempenho com melhor consumo de energia."
+              stars={5}
+              label="-9%"
+              sales="+1.615"
+               link="https://amzn.to/3XL3c5e"
             />
           </div>
         </div>
         <div className="grid--item--Homepage">
           <div className="wrapper--Homepage">
             <CardHomepage
-              img="https://m.media-amazon.com/images/I/81Ve6gN5waL._AC_SX522_.jpg"
-              title="Máscara de Hidratação Lola Cosmetics "
-              description="Aproveite as ofertas na Amazon para adquirir produtos de beleza com desconto, como a Máscara Super Hidratante Morte Súbita da Lola Cosmetics."
-              stars={3}
-              sales="+853"
+              img="https://m.media-amazon.com/images/I/41Q7Tt+mK2L._AC_SY450_.jpg"
+              title="PHILIPS Fone de ouvido sem fio TWS bluetooth com microfone e energia para 18 horas totais na cor preto, padrão, TAT1235BK/97 "
+              description="Controle sensível ao toque responsivo e fácil de usar
+Estojo de carregamento compacto para até 18 horas de tempo de reprodução
+Emparelhamento inteligente. Encontre um dispositivo Bluetooth automaticamente
+BLUETOOTH: Bluetooth 5.1 que oferece total mobilidade para curtir tudo o que quiser
+Resposta em frequência: 20 - 20.000 Hz"
+              stars={5}
+              label="-19%"
+              sales="+10.334"
+               link="https://amzn.to/44tQZ75"
             />
           </div>
         </div>

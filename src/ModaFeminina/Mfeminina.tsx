@@ -9,18 +9,20 @@ import { NavHeader } from "../Header/header";
 import { useState } from "react";
 
 interface CardFemininoProps {
-  img: string;
+img: string;
   link?: string;
   title: string;
   description: string;
-  stars?: number;
-  hearts?: number;
-  sales?: string; //número de vendas
-  label?: string; //propriedade desconto
-  className?: string; //Card especial p Destaque
-  isSpecial?: boolean; //identificar o cartão especial
+  stars?: number; //strelas
+  hearts?: number; //coração    
+  sales?: string;        //número de vendas
+  label?: string;       //propriedade desconto
+  className?: string;  //Card especial p Destaque
+  isSpecial?: boolean;//identificar o cartão especial
   style?: React.CSSProperties;
-  isFeatured?: boolean;
+  isFeatured?: boolean; //verdadeiro ou false
+  highlightText?: string; //mais vendido
+  customTitle?: string; //vichky
 }
 function CardFeminino(props: CardFemininoProps) {
   const [showName, setShowName] = useState(false);
@@ -55,10 +57,14 @@ function CardFeminino(props: CardFemininoProps) {
     </span>
   ));
   /*Substring > contagem de palavras até 200 */
-  let description = props.description;
-    if (description.length > 150) {
-      description = description.substring(0, 150) + "...";
-}
+ let description = props.description;
+  if (description.length > 85) {
+    description = description.substring(0, 85) + "...";
+  }
+   let title = props.title;
+  if (title.length > 65) {
+    title = title.substring(0, 65) + "...";
+  }
   return (
     <div className={`card--master--Game ${props.isSpecial ? "special-card" : ""}`}>
     <div
@@ -66,10 +72,12 @@ function CardFeminino(props: CardFemininoProps) {
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >
-      {props.isFeatured && (
+      {props.isFeatured && ( /*É verdade ? sim então mostre (booleano (v)(f)*/
         <div className="featured-label">
-          Mais Vendido
-          <div className={`label-name ${showName ? 'show-name' : ''}`}>em Box Ps4</div>
+          {props.highlightText} {/*mais vendido */}
+          <div className={`label-name ${showName ? 'show-name' : ''}`}>
+            {props.customTitle} {/*vichky */}
+          </div>
         </div>
       )}
       <a href={props.link} target="_blank" rel="noopener noreferrer">
@@ -80,7 +88,7 @@ function CardFeminino(props: CardFemininoProps) {
         />
       </a>
       <h2 className={`card__titulo__Game ${props.isSpecial ? "special-card" : ""}`}>
-        {props.title}
+        {(title)}
       </h2>
       <div className="card__stars__Game">
         <div className={`card__label__Game ${props.label ? "has-label" : ""}`}>
@@ -113,43 +121,52 @@ function BMFeminina() {
         <div className="grid--item--Feminino item-1">
           <div className="wrapper__Feminino">
             <CardFeminino
-              img="https://m.media-amazon.com/images/I/714onEOEW1L._AC_SR350,526_FMwebp_QL65_.jpg"
-              title="Baked Cod with Vegetables"
-              description="Aproveite as ofertas na Amazon para adquirir produtos de beleza com desconto, como a Máscara Super Hidratante Morte Súbita da Lola Cosmetics. Essa máscara de nutrição é ideal para cabelos ressecados e danificados, proporcionando suavidade, força e desembaraço. Perfeita para uso diário e após processos de coloração, a máscara vem em embalagens de 450g e possui um aroma delicioso. Encontre essa excelente opção de cuidados com os cabelos no site da Amazon. Aproveite essa oportunidade agora!"
-              hearts={3}
-              sales="+9431"
-              label="-50%"
-              isSpecial={true} // Cartão Especial
+              img="https://m.media-amazon.com/images/I/71F2tjW19JS._AC_SX522_.jpg"
+              title="Jaqueta de lã Columbia"
+              description="Não há nada mais necessário do que uma camada de lã em um guarda-roupa feminino de inverno ao ar livre — é por isso que a jaqueta de lã com zíper completo da Benton Springs existe."
+              hearts={5}
+              sales="+43.070 avaliações de Clientes"
+              label="Compra Internacional"
+              link="https://amzn.to/3JG7THK"
             />
           </div>
         </div>
         <div className="grid--item--Feminino">
           <div className="wrapper--Feminino">
             <CardFeminino
-              img="https://m.media-amazon.com/images/I/51eutIR62oL._AC_SR350,526_FMwebp_QL65_.jpg"
-              title="Baked Cod with Vegetables"
-              description="Baked Cod with Vegetables. 30 minute meal!"
-              stars={2}
-            />
-          </div>
-        </div>
-        <div className="grid--item--Feminino">
-          <div className="wrapper--Feminino">
-            <CardFeminino
-              img="https://m.media-amazon.com/images/I/61+L8l8iXbL._AC_SR350,526_FMwebp_QL65_.jpg"
-              title="Baked Cod with Vegetables"
-              description="Baked Cod with Vegetables. 30 minute meal!"
-              stars={3}
-            />
-          </div>
-        </div>
-        <div className="grid--item--Feminino">
-          <div className="wrapper--Feminino">
-            <CardFeminino
-              img="https://m.media-amazon.com/images/I/61OAR0s1MVL._AC_SR350,526_FMwebp_QL65_.jpg"
-              title="Baked Cod with Vegetables"
-              description="Baked Cod with Vegetables. 30 minute meal!"
+              img="https://m.media-amazon.com/images/I/51jPn4IsqyL._AC_SX425_.jpg"
+              title="MANGOPOP Macacão feminino de manga comprida com gola tartaruga"
+              description="MANGOPOP é uma marca de roupas popular focada nas tendências mais quentes. Todos os produtos são feitos de tecido confortável."
               stars={5}
+              sales="+48.364 avaliações de Clientes"
+              label="Compra Internacional"
+              link="https://amzn.to/46EGqQz"
+            />
+          </div>
+        </div>
+        <div className="grid--item--Feminino">
+          <div className="wrapper--Feminino">
+            <CardFeminino
+              img="https://m.media-amazon.com/images/I/71-72BGD+EL._AC_SX425_.jpg"
+              title="Cueca feminina de algodão respirável exclusiva Hanes, pacote com 6"
+              description="O tecido de absorção de umidade mantém você fresco para conforto o dia todo"
+              stars={5}
+              sales="+12.845 avaliações de Clientes"
+              label="Compra Internacional"
+              link="https://amzn.to/43dYSMV"
+            />
+          </div>
+        </div>
+        <div className="grid--item--Feminino">
+          <div className="wrapper--Feminino">
+            <CardFeminino
+              img="https://m.media-amazon.com/images/I/71FcAcoUrmL._AC_SY500_.jpg"
+              title="WDIRARA Camiseta feminina manga bufante gola quadrada manga curta elegante"
+              description="Características: Malha canelada, gola quadrada, manga bufante, ajuste slim"
+              stars={5}
+              sales="+3.995 avaliações de Clientes"
+              label="Compra Internacional"
+              link="https://amzn.to/3JJVwKC"
             />
           </div>
         </div>
@@ -158,40 +175,52 @@ function BMFeminina() {
         <div className="grid--item--Feminino item1">
           <div className="wrapper__Feminino">
             <CardFeminino
-              img="https://m.media-amazon.com/images/I/61BfvQ1w5KL._AC_SR350,526_FMwebp_QL65_.jpg"
-              title="Baked Cod with Vegetables"
-              description="Baked Cod with Vegetables. 30 minute meal!"
+              img="https://m.media-amazon.com/images/I/71niKeADr5L._AC_SX679_.jpg"
+              title="DAJU Meias femininas casuais de algodão colorido para tamanhos 34-40 (5 pares)"
+              description="As meias mais macias: a Daju projetou as meias mais confortáveis para mulheres! "
               stars={5}
+              sales="+2.434 avaliações de Clientes"
+              label="Compra Internacional"
+              link="https://amzn.to/44aICxf"
             />
           </div>
         </div>
         <div className="grid--item--Feminino">
           <div className="wrapper--Feminino">
             <CardFeminino
-              img="https://m.media-amazon.com/images/I/61L8PFbZV5L._AC_SL1500_.jpg"
-              title="Baked Cod with Vegetables"
-              description="Baked Cod with Vegetables. 30 minute meal!"
-              stars={3}
+              img="https://m.media-amazon.com/images/I/71qEwWq7WDL._AC_SY500_.jpg"
+              title="Roupa Íntima Tanga elástica pura, pacote com vários, Under Armour, Feminino"
+              description="Tamanho alfa atualizado! O novo tecido elástico super macio oferece excelente conforto durante todo o dia para qualquer atividade."
+              stars={5}
+              sales="+3.719 avaliações de Clientes"
+              label="Compra Internacional"
+              link="https://amzn.to/3XG0A8r"
             />
           </div>
         </div>
         <div className="grid--item--Feminino">
           <div className="wrapper--Feminino">
             <CardFeminino
-              img="https://images-na.ssl-images-amazon.com/images/I/513EvPYTLDL._AC_SR308,462_.jpg"
-              title="Baked Cod with Vegetables"
-              description="Baked Cod with Vegetables. 30 minute meal!"
-              stars={1}
+              img="https://m.media-amazon.com/images/I/61imufu1FTL._AC_SY500_.jpg"
+              title="Aokosor Blusa regata feminina com decote em V profundo e alças finas para o verão sem mangas"
+              description="Design: Regatas de Cami, Alças finas ajustáveis, Decote V sexy, Estilo frontal drapeado, Estampas florais exclusivas/Cor Sólida."
+              stars={5}
+              sales="+19.980 avaliações de Clientes"
+              label="Compra Internacional"
+              link="https://amzn.to/3XEvhLm"
             />
           </div>
         </div>
         <div className="grid--item--Feminino">
           <div className="wrapper--Feminino">
             <CardFeminino
-              img="https://images.unsplash.com/photo-1639680774410-ced42af91b80?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=387&q=80"
-              title="Baked Cod with Vegetables"
-              description="Baked Cod with Vegetables. 30 minute meal!"
-              stars={4}
+              img="https://m.media-amazon.com/images/I/51PxQpLiV1L._AC_SX425_.jpg"
+              title="SUUKSESS Calça legging feminina justa para levantamento de bumbum, sem costura, cintura alta, treino e ioga"
+              description="Calça flare sem costura canelada: calça de boca de sino, elasticidade em 4 direções, absorção de umidade, sem dedos de camelo, não transparente"
+              stars={5}
+              sales="+12.432 avaliações de Clientes"
+              label="Compra Internacional"
+              link="https://amzn.to/437CQLG"
             />
           </div>
         </div>

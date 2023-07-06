@@ -13,17 +13,19 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 interface CardCosmeticosProps {
   img: string;
+  link?: string;
   title: string;
   description: string;
-  stars?: number;
-  hearts?: number;
-  link?: string;
-  sales?: string;         //número de vendas
-  label?: string;        //propriedade desconto
-  className?: string;   //Card especial p Destaque
-  isSpecial?: boolean; //identificar o cartão especial
+  stars?: number; //strelas
+  hearts?: number; //coração    
+  sales?: string;        //número de vendas
+  label?: string;       //propriedade desconto
+  className?: string;  //Card especial p Destaque
+  isSpecial?: boolean;//identificar o cartão especial
   style?: React.CSSProperties;
-  isFeatured?: boolean;
+  isFeatured?: boolean; //verdadeiro ou false
+  highlightText?: string; //mais vendido
+  customTitle?: string; //vichky
 }
 function CardCosmeticos(props: CardCosmeticosProps) {
   const [showName, setShowName] = useState(false);
@@ -63,6 +65,10 @@ let description = props.description;
   if (description.length > 85) {
     description = description.substring(0, 85) + "...";
   }
+   let title = props.title;
+  if (title.length > 65) {
+    title = title.substring(0, 65) + "...";
+  }
   return (
   <div className={`card--master--Cosmeticos ${props.isSpecial ? "special-card" : ""}`}>
     <div
@@ -70,10 +76,12 @@ let description = props.description;
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
     >
-      {props.isFeatured && (
+      {props.isFeatured && ( /*É verdade ? sim então mostre (booleano (v)(f)*/
         <div className="featured-label">
-          Mais Vendido
-          <div className={`label-name ${showName ? 'show-name' : ''}`}>em Box Ps4</div>
+          {props.highlightText} {/*mais vendido */}
+          <div className={`label-name ${showName ? 'show-name' : ''}`}>
+            {props.customTitle} {/*vichky */}
+          </div>
         </div>
       )}
       <a href={props.link} target="_blank" rel="noopener noreferrer">
@@ -84,7 +92,7 @@ let description = props.description;
         />
       </a>
       <h2 className={`card__titulo__Cosmeticos ${props.isSpecial ? "special-card" : ""}`}>
-        {props.title}
+        {(title)}
       </h2>
       <div className="card__stars__Cosmeticos">
         <div className={`card__label__Cosmeticos ${props.label ? "has-label" : ""}`}>
@@ -140,43 +148,54 @@ function Cosmeticos() {
         <div className="grid--item--Cosmeticos item-1">
           <div className="wrapper__Cosmeticos">
             <CardCosmeticos
-              img="https://m.media-amazon.com/images/I/51xYDrHoHbL._AC_SX466_.jpg"
-              title="Baked Cod with Vegetables"
-              description="Aproveite as ofertas na Amazon para adquirir produtos de beleza com desconto, como a Máscara Super Hidratante Morte Súbita da Lola Cosmetics. Essa máscara de nutrição é ideal para cabelos ressecados e danificados, proporcionando suavidade, força e desembaraço. Perfeita para uso diário e após processos de coloração, a máscara vem em embalagens de 450g e possui um aroma delicioso. Encontre essa excelente opção de cuidados com os cabelos no site da Amazon. Aproveite essa oportunidade agora!"
-              hearts={3}
-              sales="+7431"
-              label="-50%"
+              img="https://m.media-amazon.com/images/I/61T10VIxrAL._AC_SX679_.jpg"
+              title="Bella Aurora, Repigment12, Tratamento para Eliminar as Manchas Brancas de Rosto e Corpo, Creme Repigmentante da pele para Manchas Brancas ou com déficit de pigmentação, 75 ml"
+              description="MITIGA AS CONSEQUÊNCIAS ESTÉTICAS DO VITILIGO NA PELE: Repigment12, CREME DE REPIGMENTAÇÃO (75 ml) para hipopigmentações e manchas brancas. Produto dermatologicamente testado. É importante complementar o tratamento cosmético com exposição ao sol ou fototerapia UVA/UVB."
+              hearts={4}
+              sales="+105"
+              label="Em até 7x R$ 57,00 sem juros "
               isSpecial={true} // Cartão Especial
+              link="https://amzn.to/3XLQByz"
             />
           </div>
         </div>
         <div className="grid--item--Cosmeticos">
           <div className="wrapper--Cosmeticos">
             <CardCosmeticos
-              img="https://m.media-amazon.com/images/I/711OtVgfhYL._AC_SY450_.jpg"
-              title="Baked Cod with Vegetables"
-              description="Baked Cod with Vegetables. 30 minute meal!"
-              stars={2}
-            />
-          </div>
-        </div>
-        <div className="grid--item--Cosmeticos">
-          <div className="wrapper--Cosmeticos">
-            <CardCosmeticos
-              img="https://m.media-amazon.com/images/I/81Ve6gN5waL._AC_SX522_.jpg"
-              title="Baked Cod with Vegetables"
-              description="Baked Cod with Vegetables. 30 minute meal!"
-              stars={3}
-            />
-          </div>
-        </div>
-        <div className="grid--item--Cosmeticos">
-          <div className="wrapper--Cosmeticos">
-            <CardCosmeticos
-              img="https://m.media-amazon.com/images/I/317wakUuJGL._MCnd_AC_.jpg"
-              title="Baked Cod with Vegetables"
-              description="Baked Cod with Vegetables. 30 minute meal!"
+              img="https://m.media-amazon.com/images/I/61uzwSCEWDS._AC_SX679_.jpg"
+              title="Sérum Facial Eucerin Anti-Pigment - Dual Sérum 30ml"
+              description="Ácido hialurônico: Resultados visíveis a partir de 2 semanas, uniformizando a tonalidade da pele e reduzindo a hiperpigmentação."
               stars={5}
+              sales="+4.263"
+                link="https://amzn.to/3NHjt6m"
+                isFeatured={true}//Sem isso não funciona
+                highlightText="Mais vendido"
+                customTitle="Eucerin"
+            />
+          </div>
+        </div>
+        <div className="grid--item--Cosmeticos">
+          <div className="wrapper--Cosmeticos">
+            <CardCosmeticos
+              img="https://m.media-amazon.com/images/I/51Fktos14TL._AC_SX679_.jpg"
+              title="Creme Facial Anti-idade Eucerin Hyaluron-Filler Dia FPS30 50ml"
+              description="Hyaluron-Filler Dia FPS 30 é um creme para uso diário que possui cadeias curtas e longas de Ácido Hialurônico e Saponina Bioativa, que aumentam a produção natural de colágeno, estimulam a renovação celular e preenchem as rugas mais profundas. "
+              sales="+530"
+              label="-20%"
+              stars={5}
+              link="https://amzn.to/3NXbzqV"
+            />
+          </div>
+        </div>
+        <div className="grid--item--Cosmeticos">
+          <div className="wrapper--Cosmeticos">
+            <CardCosmeticos
+              img="https://m.media-amazon.com/images/I/51nwCy06hKL._AC_SX679_.jpg"
+              title="Intensive Retinol Creme 50Ml, Laboratórios Naos do Brasil, 50 Ml"
+              description="O instituto esthederm estabilizou o precursor do retinol, para garantir sua liberação gradual e contínua para eficácia duradoura."
+              label="Economize 10%"
+              stars={4}
+              link="https://amzn.to/3XHdrHO"
             />
           </div>
         </div>
@@ -186,40 +205,49 @@ function Cosmeticos() {
         <div className="grid--item--Cosmeticos item1">
           <div className="wrapper__Cosmeticos">
             <CardCosmeticos
-              img="https://m.media-amazon.com/images/I/51lUym-OXcL._MCnd_AC_.jpg"
-              title="Baked Cod with Vegetables"
-              description="Baked Cod with Vegetables. 30 minute meal!"
+              img="https://m.media-amazon.com/images/I/61ZGmR0-7WL._AC_SX679_.jpg"
+              title="Neostrata Sérum Volumizador e Corretor De Rugas Facial Tri Therapy Lifting,30ml"
+              description="Estimula a síntese de colágeno, aumentando a firmeza e reduzindo as rugas profundas, Com Ácido Hialurônico, para hidratar e suavizar a pele, Sem óleo e sem fragrância, Intensifica níveis de ácido hialurônico, restaurando o volume da derme, Com rápida absorção e textura aveludada"
               stars={5}
+              sales="+143"
+              link="https://amzn.to/3D1jvB7"
             />
           </div>
         </div>
         <div className="grid--item--Cosmeticos">
           <div className="wrapper--Cosmeticos">
             <CardCosmeticos
-              img="https://m.media-amazon.com/images/I/41YZ+c64ZJL._AC_SY460_.jpg"
-              title="Baked Cod with Vegetables"
-              description="Baked Cod with Vegetables. 30 minute meal!"
-              stars={3}
+              img="https://m.media-amazon.com/images/I/61ni51z8OqL._AC_SX679_.jpg"
+              title="Kit Sérum Facial ISDINCEUTICS Flavo-C Antioxidante Ultraglican + Noturno Melatonin - 20u"
+              description="Pele seca, Hidratante, Usar para Olhos, Ácido hialurônico, Vitamina C, Beleza de Luxo."
+              stars={5}
+              sales="+685 avaliações"
+              link="https://amzn.to/3NYLhEP"
             />
           </div>
         </div>
         <div className="grid--item--Cosmeticos">
           <div className="wrapper--Cosmeticos">
             <CardCosmeticos
-              img="https://plus.unsplash.com/premium_photo-1664375246524-ae4abe93908f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=464&q=80"
-              title="Baked Cod with Vegetables"
-              description="Baked Cod with Vegetables. 30 minute meal!"
-              stars={1}
+              img="https://m.media-amazon.com/images/I/81FdVD7VEzL._AC_SX679_.jpg"
+              title="O'Keeffe's Creme para Pés Ressecado e Rachado 91 gramas"
+              description="Creme, 91 grama, pele Seca, Glicerina"
+              stars={5}
+              sales="+74.982 avaliações de Clientes"
+              label="Ranking dos mais vendidos"
+              link="https://amzn.to/44dzN5R"
             />
           </div>
         </div>
         <div className="grid--item--Cosmeticos">
           <div className="wrapper--Cosmeticos">
             <CardCosmeticos
-              img="https://images.unsplash.com/photo-1596462502278-27bfdc403348?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=580&q=80"
-              title="Baked Cod with Vegetables"
-              description="Baked Cod with Vegetables. 30 minute meal!"
-              stars={4}
+              img="https://m.media-amazon.com/images/I/61eboSEL0lL._AC_SY879_.jpg"
+              title="Victorias Secret Bombshell Fragrance Lotion for Women 8.4 oz Body Lotion"
+              description="Bombshell attitude in silky lotion, bombshell fragrance is a timeless mix of freshcut exotic flowers and afternoon sun pair the lotion, with your eau de parfum for the ultimate headtotoe bombshell experience."
+              stars={5}
+              sales="+2.273 avaliações de Clientes"
+              link="https://amzn.to/44tmtdu"
             />
           </div>
         </div>
