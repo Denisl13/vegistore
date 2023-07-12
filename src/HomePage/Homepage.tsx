@@ -172,6 +172,51 @@ Crie regras e cenas: agende horários para ligar ou desligar seus aparelhos elet
             />
           </div>
         </div>
+        <div className="grid--item--Homepage">
+          <div className="wrapper--Homepage">
+            <CardHomepage
+              img="https://m.media-amazon.com/images/I/61DdUXwOvZL._AC_SX425_.jpg"
+              title="Nofaner Caixas de armazenamento com tampas,22,5L,grandes,plástico,empilháveis,dobráveis,organizador de armazenamento de guarda-roupa para cozinha (verde escuro)"
+              description="Duas formas de abertura: a caixa de armazenamento pode ser aberta de duas maneiras. Você pode abrir a tampa na parte superior ou abri-la pela porta da frente para levar suas coisas. O painel lateral frontal possui uma aba de puxar para facilitar a abertura e o fechamento. E a porta da frente tem fivelas de bloqueio automático integradas, garantindo que as portas não se abram sozinhas durante a mudança"
+              stars={5}
+               link="https://amzn.to/3pQ5Gm3"
+            />
+          </div>
+        </div>
+        <div className="grid--item--Homepage">
+          <div className="wrapper--Homepage">
+            <CardHomepage
+              img="https://m.media-amazon.com/images/I/61h1yreLpmL._AC_SX522_.jpg"
+              title="AUNMAS Cesto de armazenamento dobrável com tampa de 55L, caixa de armazenamento de recipiente de polipropileno de grande capacidade"
+              description="[Grande capacidade de armazenamento] Quando desdobrado, medindo 48 x 35,5 x 28 cm (C x L x A), uma capacidade de 52 litros. Pode ser dobrado até 48 x 35,5 x 8,9 cm (C x L x A) quando não estiver em uso. Vem com 4 rodas destacáveis para facilitar o transporte."
+              stars={5}              
+              label="-34%"
+               link="https://amzn.to/3NQdf4h"
+            />
+          </div>
+        </div>
+        <div className="grid--item--Homepage">
+          <div className="wrapper--Homepage">
+            <CardHomepage
+              img="https://m.media-amazon.com/images/I/41wz9LdLgHL._AC_.jpg"
+              title="Kit Organizador Cozinha 1 Grande 4 Médios Prateleiras DiCarlo"
+              description="Kit Organizador 1 Prateleira Grande + 4 Prateleiras Médias,100% Aço
+              Design único e exclusivo"
+              stars={4}
+               link="https://amzn.to/3JQz1n9"
+            />
+          </div>
+        </div>
+         <div className="grid--item--Homepage">
+          <div className="wrapper--Homepage">
+            <CardHomepage
+              img="https://m.media-amazon.com/images/I/81ok5PDYF8L._AC_SY450_.jpg"
+              title="Kit Organizador Cozinha 1 Grande 4 Médios Prateleiras DiCarlo"
+              description="Caixas de armazenamento dobráveis Caixas de armazenamento de plástico Caixas de utilidades dobráveis empilháveis para roupas"
+               link="https://amzn.to/44EdRkn"
+            />
+          </div>
+        </div>
       </div>
       <Sep title="Beleza e Cuidados Pessoais" />
       <div className="grid-container-Homepage">
@@ -394,10 +439,10 @@ Diâmetro do tubo do modelador: 25 milímetros"
               img="https://m.media-amazon.com/images/I/41Q7Tt+mK2L._AC_SY450_.jpg"
               title="PHILIPS Fone de ouvido sem fio TWS bluetooth com microfone e energia para 18 horas totais na cor preto, padrão, TAT1235BK/97 "
               description="Controle sensível ao toque responsivo e fácil de usar
-Estojo de carregamento compacto para até 18 horas de tempo de reprodução
-Emparelhamento inteligente. Encontre um dispositivo Bluetooth automaticamente
-BLUETOOTH: Bluetooth 5.1 que oferece total mobilidade para curtir tudo o que quiser
-Resposta em frequência: 20 - 20.000 Hz"
+              Estojo de carregamento compacto para até 18 horas de tempo de reprodução
+              Emparelhamento inteligente. Encontre um dispositivo Bluetooth automaticamente
+              BLUETOOTH: Bluetooth 5.1 que oferece total mobilidade para curtir tudo o que quiser
+              Resposta em frequência: 20 - 20.000 Hz"
               stars={5}
               label="-19%"
               sales="+10.334"

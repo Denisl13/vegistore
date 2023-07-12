@@ -223,6 +223,50 @@ Tipo : Robótico"
             />
           </div>
         </div>
+        <div className="grid--item--Casa">
+          <div className="wrapper--Casa">
+            <CardCasa
+              img="https://m.media-amazon.com/images/I/61+7qaPjChL._AC_SX522_.jpg"
+              title="Caixa de Armazenamento Dobrável, Organizador de Armário Empilhável de 35 L Com Porta Dupla para Escritório e Quarto"
+              description="Alta capacidade: Grande o suficiente para armazenar mantimentos, livros, brinquedos, roupas, blusas, tecidos, mangas, luvas, artigos de papelaria, bebidas e muito mais."
+              stars={5}
+              link="https://amzn.to/3pKzIry"
+            />
+          </div>
+        </div>
+        <div className="grid--item--Casa">
+          <div className="wrapper--Casa">
+            <CardCasa
+              img="https://m.media-amazon.com/images/I/61Uf+aYl3NL._AC_SX522_.jpg"
+              title="Organizadores de Armário Grande 32L e Caixas de Armazenamento Com Tampa Caixa de Armazenamento Dobrável Armário de Armazenamento Transparente para Roupas"
+              description="Multifunção: A caixa de armazenamento dobrável é uma caixa de armazenamento multifuncional, que pode ser usada como armário de armazenamento, caixa de armazenamento externa, caixa de armazenamento de garagem, caixa de armazenamento de ferramentas, caixa de armazenamento de cozinha"
+              stars={5}
+              link="https://amzn.to/3PTWEiS"
+            />
+          </div>
+        </div>
+        <div className="grid--item--Casa">
+          <div className="wrapper--Casa">
+            <CardCasa
+              img="https://m.media-amazon.com/images/I/61v7CaAC7cL._AC_SX425_.jpg"
+              title="VINGVO Armário de armazenamento dobrável, caixas de armazenamento para instalação gratuita 2 modos de abertura para quarto (branco)"
+              description="Grande capacidade de armazenamento: forte o suficiente para suportar 110 libras (50 quilogramas). Os lados esquerdo e direito são projetados com alças, que podem levantar bem a caixa"
+              stars={5}
+              link="https://amzn.to/44F515Y"
+            />
+          </div>
+        </div>
+         <div className="grid--item--Casa">
+          <div className="wrapper--Casa">
+            <CardCasa
+              img="https://m.media-amazon.com/images/I/71N3nIJJ5sL._AC_SX522_.jpg"
+              title="Organizador de armazenamento de cubo – Guarda-roupa, cestos de plástico dobráveis 32L com tampas e porta"
+              description="【Duas maneiras de abertura】: O design de capa dupla é inovador e prático. A tampa superior é fácil de tirar e colocar em itens grandes. A porta lateral tem fivelas fechadas, o que pode evitar que itens internos caiam ao se mover."
+              stars={5}
+              link="https://amzn.to/3PQ3aqL"
+            />
+          </div>
+        </div>
       </div>
       <BvoltaTop />
       <Footer />
