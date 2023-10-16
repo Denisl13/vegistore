@@ -1,0 +1,15 @@
+/*Fonte do Separador e Título */
+@font-face {
+  font-family: "BreuerText";
+  src: url("./Breuer Text Regular.ttf") format("ttf");
+  font-display: swap;
+}
+/*Fonte da Descrição*/
+@font-face {
+  font-family: "Myriad Pro";
+  src: url("./Myriad-Pro.ttf")
+    format("ttf");
+    font-display: swap;
+}
+/*//db.onlinewebfonts.com/t/a89cf050c859a23e4b6d9cf5989acf9e.woff
+*/

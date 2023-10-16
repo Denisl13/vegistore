@@ -1,0 +1,35 @@
+.footer {
+  min-width: 200px;
+  height: 15vh;
+  padding: 1rem;
+  background-color: #222237;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.foot--store {
+  font-family: "Roboto", sans-serif;
+  line-height: 0.5;
+  width: 50%;
+  margin: 0.5em 0;
+  color: #00a7df;
+  text-align: center;
+}
+.p2__Footer {
+  color: #858565;
+}
+.p2__Footer,
+.p3__Footer__ano {
+  font-family: "Roboto", sans-serif;
+  font-size: 12px;
+  line-height: 0.8;
+  width: 50%;
+  margin: 0.5em 0;
+  color: #00a7df;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}

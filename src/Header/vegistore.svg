@@ -1,0 +1,6 @@
+<svg viewBox="0 0 400 200" xmlns="http://www.w3.org/2000/svg">
+  <path id="curve" d="M50,100 C50,50 350,50 350,100" />
+  <text>
+    <textPath xlink:href="#curve">Vegistore</textPath>
+  </text>
+</svg>

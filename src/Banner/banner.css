@@ -1,0 +1,118 @@
+* {
+  box-sizing: border-box;
+}
+
+.featured {
+  /*imagens do banner*/
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: 80vh;
+  
+}
+
+.featured--vertical {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  height: inherit;
+  width: 100%;
+  /*background: linear-gradient(
+    to top,
+    #111 0%,
+    rgba(0, 0, 0, 0) 100%
+  );*/
+}
+.featured--horizontal {
+  height: inherit;
+  width: 100%;
+  background: linear-gradient(
+    to right,
+    rgba(0, 0, 0, 0.8) 10%,
+    rgba(0, 0, 0, 0.5) 20%,
+    rgba(0, 0, 0, 0.3) 30%,
+    transparent 70%
+  );
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 0 3%;
+}
+
+.featured--name {
+  /*título*/
+  font-size: 4vw;
+  font-weight: bold;
+  color: #e5e5e5;
+  margin-bottom: 1.5rem;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.featured--description {
+  font-size: 1.5vw;
+  color: #e5e5e5;
+  max-width: 60%; /*Descrição > Ocupação na imagem*/
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+  line-height: 1.5;
+}
+
+/*Criação de botão responsivo*/
+.featured--buttons {
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-gap: 10px;
+}
+
+.featured--button {
+  display: inline-block;
+  padding: 10px 20px;
+  color: #e5e5e5;
+  font-size: 1.3rem;
+  font-weight: bold;
+  margin-top: 1em;
+  width: 300px; /* Altere a largura conforme necessário */
+  cursor: pointer;
+  border-radius: 0.3rem;
+  border: 1px solid #e5e5e5;
+  text-align: center;
+  text-decoration: none;
+  text-transform: uppercase;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+}
+.netflix-button {
+  font-size: 1.3rem;
+  color: #e5e5e5;
+  border: 1px solid #e5e5e5;
+  transition: all 0.2s ease-in-out;
+  background-image: linear-gradient(to bottom right, #ffcc33, #ff9933);
+}
+.netflix-button:hover {
+  background-image: none;
+  color: #000;
+}
+
+.featured--button:hover {
+  background-color: #e5e5e5;
+}
+.featured--button:hover {
+  transform: scale(1.1);
+}
+@media screen and (max-width: 760px) {
+  .featured--name {
+    font-size: 2.5rem;
+  }
+  .featured--description {
+    font-size: 14px;
+    max-width: 100%;
+  }
+
+  .netflix-button {
+    width: 80%;
+    font-size: 1rem;
+  }
+  .featured--button:last-child {
+    margin-bottom: 0;
+  }
+}

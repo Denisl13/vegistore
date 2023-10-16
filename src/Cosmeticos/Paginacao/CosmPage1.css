@@ -1,0 +1,234 @@
+/*Card Especial em destaque/Promoção*/
+.card--master--ccPage1.special-card {
+  /*background: linear-gradient(to right, #0B47A1, orange);*/
+  background-color: #0B47A1;
+  color: #ffffff;
+}
+
+.card--master--ccPage1.special-card h2,
+.card--master--ccPage1.special-card p {
+  color: #ffffff;
+}
+
+.card__botao__ccPage1.special-card {
+  color: #ffffff;
+}
+
+.card__botao__ccPage1.special-card {
+  background-color: #f5f5f5;
+  color: blue;
+  border-color: #fff000;
+}
+
+.card--master--ccPage1:hover .card__botao__ccPage1.special-card {
+  background-color: #F5C700;
+  color: #3a310a;
+}
+
+/*------------------FIM DO CARD ESPECIAL---------------------------------------*/
+
+.grid--item--ccPage1 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.3s ease-in-out;
+}
+
+.grid--item--ccPage1:hover {
+  transform: scale(1.04);
+}
+
+/*Container do card geral*/
+.grid-container-ccPage1 {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(16rem, 1fr));
+  margin: 0.5rem;
+  gap: 1.5rem;
+  padding: 1rem;
+  background-color: #f5f5f5;
+}
+
+.card--master--ccPage1 {
+  border-radius: var(--radius);
+  box-shadow: 0px 0px 10px 5px rgba(0, 0, 0, 0.5);
+  cursor: pointer;
+}
+
+/*Alinhamento da imagem ao centro*/
+.card__corpo__ccPage1 a {
+  display: flex;
+  justify-content: center;
+  padding-top: 0.5rem;
+}
+
+/*imagem*/
+.card-imagem--ccPage1 {
+  height: 11rem;
+  max-width: 100%;
+  object-fit: cover;
+
+}
+
+/*Mais vendidos acima da imagem*/
+.wrapper__ccPage1 {
+  position: relative;
+}
+
+.featured-label {
+  position: relative;
+  display: inline-block;
+  top: 0;
+  left: 0;
+  background-color: red;
+  color: #ffffff;
+  padding: 0.5rem 1.5rem;
+  font-size: 12px;
+  font-weight: bold;
+  opacity: 1;
+  transition: none;
+  z-index: 2;
+}
+
+.label-name {
+  position: absolute;
+  top: 0;
+  left: 100%;
+  transform: translateX(5px);
+  background-color: red;
+  color: #ffffff;
+  padding: 0.4rem 0.1rem;
+  font-size: 18px;
+  font-weight: bold;
+  z-index: 2;
+  display: none;
+  width: 200px;
+  background-color: transparent;
+  color: #030303;
+}
+
+.card__corpo__ccPage1.show-name .label-name {
+  display: block;
+}
+
+/*Corte na Etiqueta*/
+.featured-label::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  width: 0;
+  height: 0;
+  border-style: solid;
+  border-width: 0 0 2rem 1.6rem;
+  /*tem  estar na medida certa senão não sai a borda*/
+  border-color: transparent transparent #ffffff transparent;
+  z-index: -1;
+}
+
+/*.wrapper__Game .card-img {
+  position: relative;
+  z-index: 1;
+}
+*/
+/*espaço etiqueta e imagem*/
+.featured-card {
+  margin-top: 0.5rem;
+}
+
+.card__titulo__ccPage1 {
+  font-size: 16px;
+  font-family: "BreuerText", sans-serif;
+  line-height: 20px;
+  padding: 0.6rem;
+  color: #353535;
+}
+
+.card__descricao__ccPage1 {
+  font-size: 14px;
+  font-family: "Myriad Pro", sans-serif;
+  margin-top: 12px;
+  line-height: 20px;
+  padding: 0 0.6rem;
+  color: #353535;
+}
+
+.card__botao__ccPage1 {
+  width: 90%;
+  padding: 0.5rem;
+  margin: 0.9rem;
+  font-family: inherit;
+  font-weight: bold;
+  font-size: 0.8rem;
+  cursor: pointer;
+  border: 2px solid var(--clr-primary);
+  border-radius: var(--radius);
+  background: transparent;
+  color: var(--clr-primary);
+  transition: background 200ms ease-in, color 200ms ease-in;
+}
+
+/*Desconto sales*/
+.card__label__ccPage1.has-label {
+  background-color: #CC0C39;
+  color: #ffffff;
+  padding: 0.3rem;
+  margin: 2px 0 10px;
+  border-radius: 0.2rem;
+  align-self: flex-start;
+}
+
+/*CARDS STARS*/
+.card__stars__ccPage1 {
+  display: flex;
+  flex-direction: column;
+  margin-left: 15px;
+  margin-top: -5px;
+  /*align-items: center;*/
+}
+
+.card__stars__ccPage1 span {
+  margin-bottom: 0.5rem;
+}
+
+/*Texto*/
+.card__stars__ccPage1 p {
+  margin: 0;
+  font-size: 16 px;
+  margin-top: -0.3rem;
+}
+
+/* Tamanho das estrelas */
+.card__stars__ccPage1 .star-icon {
+  font-size: 20px;
+
+}
+
+/*CARDS CORAÇÃO*/
+@keyframes pulse {
+  0% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.2);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
+/*Tamanho dos corações*/
+.heart-animation {
+  font-size: 20px;
+  margin-right: 2px;
+}
+
+.card__hearts__ccPage1 {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+}
+
+.card__hearts__ccPage1 span {
+  animation: pulse 1.5s infinite;
+}
